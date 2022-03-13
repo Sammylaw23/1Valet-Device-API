@@ -41,6 +41,14 @@ namespace _1Valet.Device.API.Controllers
             return NoContent();
         }
 
+        [HttpPost("toggledeviceavailability")]
+        public async Task<IActionResult> ToggleDeviceAvailability(DeviceRequest request)
+        {
+            return NoContent();
+        }
+
+
+
         //[HttpDelete("{id}")]
         //public void Delete(int id)
         //{

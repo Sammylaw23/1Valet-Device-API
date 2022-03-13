@@ -9,14 +9,16 @@ namespace _1Valet.Device.Domain.Entities
 {
     public class Device
     {
-        public long DeviceId { get; set; }
-        public decimal Temperature { get; set; }
-        public string Info { get; set; }
-        public string Usage { get; set; }
-        public DeviceStatus Status { get; set; }
-        //public List<Device> RelatedDevices { get; set; }
+        public int DeviceId { get; set; }
+        public string Name { get; set; }
+        public double Temperature { get; set; }
+        public bool Online { get; set; }
 
-        public List<DeviceUserDevice> DeviceUserDevices { get; set; }
+        //public string Usage { get; set; }
+        //public DeviceStatus Status { get; set; }
+        //public List<Device> RelatedDevices { get; set; } list of Ids
+
+        //public List<DeviceUserDevice> DeviceUserDevices { get; set; }
 
 
         public int DeviceTypeId { get; set; } //FK

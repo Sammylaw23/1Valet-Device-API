@@ -17,7 +17,7 @@ namespace _1Valet.Device.Infrastructure.Contexts
         public DbSet<DeviceUser> DeviceUsers { get; set; }
         public DbSet<Domain.Entities.Device> Devices { get; set; }
         public DbSet<DeviceType> DeviceTypes { get; set; }
-        public DbSet<DeviceUserDevice> DeviceUserDevices { get; set; }
+
 
 
 
