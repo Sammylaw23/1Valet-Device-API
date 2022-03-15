@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OneValet.DeviceGallery.Application.DTOs.User;
 using OneValet.DeviceGallery.Application.Interfaces.Services;
-
+using OneValet.DeviceGallery.API.Middlewares;
 namespace OneValet.DeviceGallery.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[BasicAuthenticationHandler]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;

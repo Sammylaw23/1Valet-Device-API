@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authentication;
 using OneValet.DeviceGallery.API.Extensions;
+using OneValet.DeviceGallery.API.Middlewares;
 using OneValet.DeviceGallery.Application;
 using OneValet.DeviceGallery.Infrastructure;
 
@@ -11,9 +13,15 @@ services.AddInfrastructure(configuration);
 services.AddApplicationLayer();
 services.AddCors(options => options.AddDefaultPolicy(builder => builder.WithOrigins(configuration["AllowedUrl"]).AllowAnyHeader().AllowAnyMethod()));
 
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+services.AddAuthentication("BasicAuthentication")
+    .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
+
 // Wait 30 seconds for graceful shutdown
 builder.Host.ConfigureHostOptions(o => o.ShutdownTimeout = TimeSpan.FromSeconds(30));
 
