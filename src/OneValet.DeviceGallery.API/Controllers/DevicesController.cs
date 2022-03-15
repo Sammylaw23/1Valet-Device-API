@@ -41,6 +41,13 @@ namespace OneValet.DeviceGallery.API.Controllers
             return NoContent();
         }
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _deviceService.DeleteDeviceAsync(id);
+            return NoContent();
+        }
+
         [HttpPut("toggledeviceavailability/{id}")]
         public async Task<IActionResult> ToggleDeviceAvailability(int id)
         {
@@ -49,13 +56,7 @@ namespace OneValet.DeviceGallery.API.Controllers
         }
 
 
-        [HttpDelete("{id}")]
-
-        public async Task<IActionResult> Delete(int id)
-        {
-
-            return NoContent();
-        }
+       
 
     }
 }

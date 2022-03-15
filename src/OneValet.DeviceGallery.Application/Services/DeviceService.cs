@@ -60,7 +60,6 @@ namespace OneValet.DeviceGallery.Application.Services
             //    IconBase64String = "dwjkjkjkjhjHHghKhHhjkHkGHGhgJhgHhjHJhgHh",
             //};
         }
-
         public async Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync()
         {
             var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync();
@@ -72,17 +71,15 @@ namespace OneValet.DeviceGallery.Application.Services
             var device = await _repositoryProvider.DeviceRepository.GetDeviceByIdAsync(id);
             return device == null ? throw new NotFoundException() : new Response<DeviceResponse>(_mapper.Map<DeviceResponse>(device));
         }
-
-
         public async Task UpdateDeviceAsync(int id, DeviceRequest deviceRequest)
         {
             var device = await _repositoryProvider.DeviceRepository.GetDeviceByIdAsync(id);
-            if(device == null)
+            if (device == null)
                 throw new NotFoundException();
-            if (device.Name != deviceRequest.Name)
-                throw new ArgumentException("Invalid device name.");
+            //if (device.Name != deviceRequest.Name) //You can't do this. It is possible the Name property is what was changed in the request
+            //    throw new ArgumentException("Invalid device name.");
             _mapper.Map(deviceRequest, device);
-             _repositoryProvider.DeviceRepository.UpdateDevice(device);
+            _repositoryProvider.DeviceRepository.UpdateDevice(device);
             await _repositoryProvider.SaveChangesAsync();
 
         }

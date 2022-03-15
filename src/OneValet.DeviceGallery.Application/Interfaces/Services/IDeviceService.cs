@@ -19,10 +19,6 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Services
         Task ToggleAvailability(int id);
 
         Task DeleteDeviceAsync(int id);
-        //Task<Response<NewWalletResponse>> CreateWalletAsync(NewWalletRequest accountRequest);
-        //Task<Response<IEnumerable<WalletDto>>> GetAllWalletAsync();
-        //Task<Response<WalletDto>> GetWalletByAccountNoAsync(string accountNumber);
-        //Task<Response<WalletDto>> GetWalletByIdAsync(Guid id);
-        //Task FundWalletAsync(Guid accountId, FundWalletRequest request);
+        
     }
 }

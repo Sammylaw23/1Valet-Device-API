@@ -10,7 +10,7 @@ namespace OneValet.DeviceGallery.Application.DTOs.Device
 {
     public class DeviceResponse
     {
-        public int DeviceId { get; set; }
+        public int Id { get; set; }
         public double TemperatureC { get; set; }
         //public string Info { get; set; }
         //public string Usage { get; set; }
