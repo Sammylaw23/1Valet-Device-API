@@ -17,6 +17,7 @@ namespace OneValet.DeviceGallery.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

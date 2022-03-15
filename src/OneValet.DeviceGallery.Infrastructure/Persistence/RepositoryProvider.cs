@@ -14,12 +14,15 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence
     {
         private readonly IApplicationDbContext _dbContext;
         private IDeviceRepository? _deviceRepository;
+        private IUserRepository? _userRepository;
 
         public RepositoryProvider(IApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
         public IDeviceRepository DeviceRepository => _deviceRepository ??= new DeviceRepository(_dbContext);
+
+        public IUserRepository UserRepository => _userRepository ??= new UserRepository(_dbContext);
 
         public async Task SaveChangesAsync() => await _dbContext.SaveChangesAsync();
         

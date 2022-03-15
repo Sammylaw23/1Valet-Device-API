@@ -10,6 +10,7 @@ namespace OneValet.DeviceGallery.Application.Interfaces
     public interface IRepositoryProvider
     {
         public IDeviceRepository DeviceRepository { get; }
+        public IUserRepository UserRepository { get; }
 
         
 
