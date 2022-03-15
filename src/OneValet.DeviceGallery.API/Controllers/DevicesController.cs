@@ -19,12 +19,12 @@ namespace OneValet.DeviceGallery.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDevices()
         {
-            return Ok(await _deviceService.GetDevicesAsync());
+            return Ok(await _deviceService.GetAllDevicesAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDeviceById(long id) =>
-           Ok(await _deviceService.GetDeviceAsync(id));
+        public async Task<IActionResult> GetDeviceById(int id) =>
+           Ok(await _deviceService.GetDeviceByIdAsync(id));
 
         [HttpPost]
         public async Task<IActionResult> AddDevice(DeviceRequest request)
@@ -35,24 +35,27 @@ namespace OneValet.DeviceGallery.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDevice(long id, DeviceRequest request)
+        public async Task<IActionResult> UpdateDevice(int id, DeviceRequest request)
         {
             await _deviceService.UpdateDeviceAsync(id, request);
             return NoContent();
         }
 
-        [HttpPost("toggledeviceavailability")]
-        public async Task<IActionResult> ToggleDeviceAvailability(DeviceRequest request)
+        [HttpPut("toggledeviceavailability/{id}")]
+        public async Task<IActionResult> ToggleDeviceAvailability(int id)
         {
+            await _deviceService.ToggleAvailability(id);
             return NoContent();
         }
 
 
+        [HttpDelete("{id}")]
 
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        public async Task<IActionResult> Delete(int id)
+        {
+
+            return NoContent();
+        }
 
     }
 }

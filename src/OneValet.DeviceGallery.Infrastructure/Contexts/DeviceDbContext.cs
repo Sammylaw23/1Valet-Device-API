@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OneValet.DeviceGallery.Application.Interfaces;
 
 namespace OneValet.DeviceGallery.Infrastructure.Contexts
 {
-    public class DeviceDbContext : DbContext/*, IApplicationDbContext*/
+    public class DeviceDbContext : DbContext, IApplicationDbContext
     {
         public DeviceDbContext(DbContextOptions<DeviceDbContext> options) : base(options)
         {

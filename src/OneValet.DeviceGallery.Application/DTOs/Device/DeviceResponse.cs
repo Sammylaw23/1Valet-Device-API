@@ -10,17 +10,26 @@ namespace OneValet.DeviceGallery.Application.DTOs.Device
 {
     public class DeviceResponse
     {
-        public long DeviceId { get; set; }
-        public decimal Temperature { get; set; }
-        public string Info { get; set; }
-        public string Usage { get; set; }
-        public DeviceStatus Status { get; set; }
+        public int DeviceId { get; set; }
+        public double TemperatureC { get; set; }
+        //public string Info { get; set; }
+        //public string Usage { get; set; }
+        public string Status { get; set; }
+        public string Name { get; set; }
+        public string IconBase64String { get; set; }
+        public bool Online { get; set; }
+
+        //public int DeviceTypeId { get; set; }
+        //public DeviceType DeviceType { get; set; }
+
+
+
+
         //public List<Device> RelatedDevices { get; set; }
 
         //public List<DeviceUserDevice> DeviceUserDevices { get; set; }
 
 
-        public int DeviceTypeId { get; set; }
-        public DeviceType DeviceType { get; set; }
+
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using OneValet.DeviceGallery.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 using OneValet.DeviceGallery.Application.Interfaces;
+using OneValet.DeviceGallery.Infrastructure.Persistence;
 
 namespace OneValet.DeviceGallery.Infrastructure
 {
@@ -15,12 +16,10 @@ namespace OneValet.DeviceGallery.Infrastructure
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            configuration.GetValue<bool>("UseInMemoryDatabase");
-
             if (configuration.GetValue<bool>("UseInMemoryDatabase"))
             {
-                //services.AddDbContext<DeviceDbContext>(options =>
-                //    options.UseInMemoryDatabase("OneValetDeviceGalleryDB"));
+                services.AddDbContext<DeviceDbContext>(options =>
+                    options.UseInMemoryDatabase("OneValetDeviceGalleryDB"));
             }
             else
             {
@@ -30,16 +29,15 @@ namespace OneValet.DeviceGallery.Infrastructure
             }
 
 
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<DeviceDbContext>());
+
+            services.AddScoped<IRepositoryProvider, RepositoryProvider>();
 
 
 
 
 
 
-            "UseInMemoryDatabase": false,
-  "ConnectionStrings": {
-                "DefaultConnection": "Data Source=DESKTOP-QCM5AL0;Initial Catalog=CleanArchitectureApplicationDb;Integrated Security=True;MultipleActiveResultSets=True",
-    "IdentityConnection": "Data Source=DESKTOP-QCM5AL0;Initial Catalog=identityDb;Integrated Security=True;MultipleActiveResultSets=True"
-        }
         }
     }
+}

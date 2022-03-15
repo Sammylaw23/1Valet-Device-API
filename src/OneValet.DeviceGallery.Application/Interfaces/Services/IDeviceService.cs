@@ -11,12 +11,18 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Services
    public interface IDeviceService
     {
 
-        Task<Response<long>> AddDeviceAsync(DeviceRequest deviceRequest);
-        Task UpdateDeviceAsync(long id, DeviceRequest deviceRequest);
-        Task<Response<DeviceResponse>> GetDeviceAsync(long id);
-        Task<Response<IEnumerable<DeviceResponse>>> GetDevicesAsync();
-        //Task<Response<OrderResponse>> PlaceOrderAsync(NewOrderRequest request);
-        //Task<Response<OrderDto>> GetOrderAsync(long id);
-        //Task<Response<IEnumerable<OrderDto>>> GetOrdersAsync(OrderFilterOption filter);
+        Task<Response<DeviceResponse>> AddDeviceAsync(DeviceRequest deviceRequest);
+        Task UpdateDeviceAsync(int id, DeviceRequest deviceRequest);
+        Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id);
+        Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync();
+
+        Task ToggleAvailability(int id);
+
+        Task DeleteDeviceAsync(int id);
+        //Task<Response<NewWalletResponse>> CreateWalletAsync(NewWalletRequest accountRequest);
+        //Task<Response<IEnumerable<WalletDto>>> GetAllWalletAsync();
+        //Task<Response<WalletDto>> GetWalletByAccountNoAsync(string accountNumber);
+        //Task<Response<WalletDto>> GetWalletByIdAsync(Guid id);
+        //Task FundWalletAsync(Guid accountId, FundWalletRequest request);
     }
 }

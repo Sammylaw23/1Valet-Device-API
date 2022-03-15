@@ -16,7 +16,7 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence
 
         public RepositoryBase(IApplicationDbContext context)
         {
-            _dbContext = context as DeviceDbContext;
+            _dbContext = (DeviceDbContext)context;
         }
 
         protected virtual async Task AddAsync(T entity) => await _dbContext.Set<T>().AddAsync(entity);

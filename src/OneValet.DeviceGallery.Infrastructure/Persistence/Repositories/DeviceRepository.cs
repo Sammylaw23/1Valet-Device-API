@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OneValet.DeviceGallery.Domain.Entities;
 
 namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 {
@@ -17,13 +18,14 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             await AddAsync(device);
         }
 
+
         public async Task<IEnumerable<Domain.Entities.Device>> GetAllDeviceAsync()
         {
-           return await Get().ToListAsync();
+            return await Get().ToListAsync();
             //await Get(includeProperties: "Currency").ToListAsync();
         }
 
-        public async Task<Domain.Entities.Device> GetDeviceByDeviceNoAsync(long deviceId) =>
+        public async Task<Domain.Entities.Device> GetDeviceByDeviceNoAsync(int deviceId) =>
             await _dbContext.Devices
             .Where(a => a.Id == deviceId)
             .AsNoTracking()
@@ -31,7 +33,7 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             .FirstOrDefaultAsync();
 
 
-        public async Task<Domain.Entities.Device> GetDeviceByIdAsync(long id) =>
+        public async Task<Domain.Entities.Device> GetDeviceByIdAsync(int id) =>
             await _dbContext.Devices.Where(a => a.Id == id)
             .AsNoTracking()
             //.Include(a => a.)
@@ -39,5 +41,8 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 
 
         public void UpdateDevice(Domain.Entities.Device device) => Update(device);
+
+
+        public void DeleteDevice(Device device) => Delete(device);
     }
 }
