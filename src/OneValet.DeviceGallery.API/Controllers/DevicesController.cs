@@ -1,12 +1,14 @@
 ﻿using OneValet.DeviceGallery.Application.DTOs.Device;
 using OneValet.DeviceGallery.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace OneValet.DeviceGallery.API.Controllers
 {
     [Route("api/devices")]
     [ApiController]
+    [Authorize]
+
     public class DevicesController : ControllerBase
     {
         private readonly IDeviceService _deviceService;

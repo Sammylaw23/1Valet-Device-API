@@ -8,7 +8,7 @@ namespace OneValet.DeviceGallery.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[BasicAuthenticationHandler]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -27,6 +27,7 @@ namespace OneValet.DeviceGallery.API.Controllers
 
 
         [HttpPost("authentication")]
+        [AllowAnonymous]
         public async Task<IActionResult> AuthenticateUser(AuthenticationRequest request)
         {
             return Ok(await _userService.AuthenticateAsync(request));

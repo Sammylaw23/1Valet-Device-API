@@ -107,5 +107,26 @@ namespace OneValet.DeviceGallery.Application.Services
           
             return new Response<AuthenticationResponse>(response, $"Successfully authenticated {user.Email}");
         }
+
+        public async Task<AuthenticationResponse> BasicAuthenticateAsync(AuthenticationRequest request)
+        {
+            var user = await _repositoryProvider.UserRepository.GetUserByEmailAsync(request.Email);
+            if (user == null)
+            {
+                return null;
+                //return new AuthenticationResponse(null, $"No Users registered with {request.Email}.");
+            }
+            var exist = await _repositoryProvider.UserRepository.UserCredentialExist(request);
+            if (!exist)
+            {
+                return null;
+                //return new Response<AuthenticationResponse>(null, $"Invalid Credentials for '{request.Email}'.");
+            }
+
+            var response = _mapper.Map<AuthenticationResponse>(user);
+            response.IsVerified = true;
+            return response;
+            //return new Response<AuthenticationResponse>(response, $"Successfully authenticated {user.Email}");
+        }
     }
 }

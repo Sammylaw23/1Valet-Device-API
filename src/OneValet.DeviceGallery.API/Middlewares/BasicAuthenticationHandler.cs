@@ -13,51 +13,70 @@ namespace OneValet.DeviceGallery.API.Middlewares
 {
     public class BasicAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
     {
-        //private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
         public BasicAuthenticationHandler(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
             ILoggerFactory logger,
             UrlEncoder encoder,
             ISystemClock clock
-            //,
-            //IUserService userService
+            ,IUserService userService
             )
             : base(options, logger, encoder, clock)
         {
-            //_userService = userService;
+            _userService = userService;
         }
 
 
-        protected override Task<AuthenticateResult> HandleAuthenticateAsync()
+        protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
+            if (!Request.Headers.ContainsKey("Authorization"))
+                return AuthenticateResult.Fail("Missing Authorization Header");
             var authHeader = Request.Headers["Authorization"].ToString();
             if (authHeader != null && authHeader.StartsWith("basic", StringComparison.OrdinalIgnoreCase))
             {
                 var token = authHeader.Substring("Basic ".Length).Trim();
-                System.Console.WriteLine(token);
+                Console.WriteLine(token);
                 var credentialstring = Encoding.UTF8.GetString(Convert.FromBase64String(token));
                 var credentials = credentialstring.Split(':');
-                if (credentials[0] == "admin" && credentials[1] == "admin")
+
+                //Create request
+                AuthenticationRequest request = new AuthenticationRequest()
+                {
+                    Email = credentials[0],
+                    Password = credentials[1]
+                };
+
+
+               var user = await _userService.BasicAuthenticateAsync(request);
+                //if (credentials[0] == "admin" && credentials[1] == "admin")
+                if (user != null)
                 {
                     var claims = new[] { new Claim("name", credentials[0]), new Claim(ClaimTypes.Role, "Admin") };
                     var identity = new ClaimsIdentity(claims, "Basic");
                     var claimsPrincipal = new ClaimsPrincipal(identity);
-                    return Task.FromResult(AuthenticateResult.Success(new AuthenticationTicket(claimsPrincipal, Scheme.Name)));
+                    var ticket = new AuthenticationTicket(claimsPrincipal, Scheme.Name);
+                    return AuthenticateResult.Success(ticket);
+
+                    //Alternative...................
+            //        var claims = new[] {
+            //    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            //    new Claim(ClaimTypes.Name, user.Username),
+            //};
+            //        var identity = new ClaimsIdentity(claims, Scheme.Name);
                 }
 
                 Response.StatusCode = 401;
-                Response.Headers.Add("WWW-Authenticate", "Basic realm=\"dotnetthoughts.net\"");
-                return Task.FromResult(AuthenticateResult.Fail("Invalid Authorization Header"));
+                Response.Headers.Add("WWW-Authenticate", "Basic realm=\"onevaletdevices.com\"");
+                return AuthenticateResult.Fail("Invalid Email or Password");
             }
             else
             {
-                string realm = "dotnetthoughts";
+                string realm = "onevaletdevices";
                 Response.StatusCode = 401;
-                //Response.Headers.Add("WWW-Authenticate", "Basic realm=\"dotnetthoughts.net\"");
-                Response.Headers.Add("WWW-Authenticate",
-    string.Format("Basic realm=\"{0}\"", realm));
-                return Task.FromResult(AuthenticateResult.Fail("Invalid Authorization Header"));
+                //Response.Headers.Add("WWW-Authenticate", "Basic realm=\"onevaletdevices.com\"");
+                Response.Headers.Add("WWW-Authenticate", string.Format("Basic realm=\"{0}\"", realm));
+                return AuthenticateResult.Fail("Invalid Authorization Header");
             }
         }
 
