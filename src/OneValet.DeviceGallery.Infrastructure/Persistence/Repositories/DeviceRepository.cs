@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OneValet.DeviceGallery.Domain.Entities;
+using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
+using OneValet.DeviceGallery.Application.Wrappers;
+using OneValet.DeviceGallery.Application.DTOs.Device;
+using EFCore.BulkExtensions;
 
 namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 {
@@ -19,18 +23,29 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
         }
 
 
-        public async Task<IEnumerable<Domain.Entities.Device>> GetAllDeviceAsync()
+        public async Task<PagedList<Domain.Entities.Device>> GetAllDeviceAsync(DeviceParameters deviceParameters)
         {
-            return await Get().ToListAsync();
+             var devices = await Get()
+                .OrderBy(x => x.Id)                
+                .ToListAsync();
+
+            return PagedList<Domain.Entities.Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
+
             //await Get(includeProperties: "Currency").ToListAsync();
         }
 
-        public async Task<Domain.Entities.Device> GetDeviceByDeviceNoAsync(int deviceId) =>
-            await _dbContext.Devices
-            .Where(a => a.Id == deviceId)
-            .AsNoTracking()
-            //.Include(a => a.)
-            .FirstOrDefaultAsync();
+
+   
+
+
+
+
+        //public async Task<Domain.Entities.Device> GetDeviceByDeviceNoAsync(int deviceId) =>
+        //    await _dbContext.Devices
+        //    .Where(a => a.Id == deviceId)
+        //    .AsNoTracking()
+        //    //.Include(a => a.)
+        //    .FirstOrDefaultAsync();
 
 
         public async Task<Domain.Entities.Device> GetDeviceByIdAsync(int id) =>
@@ -44,5 +59,9 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 
 
         public void DeleteDevice(Device device) => Delete(device);
+
+        public async Task AddMultipleDevicesAsync(IEnumerable<Device> devices)
+            => await _dbContext.BulkInsertAsync(devices.ToList());
+        
     }
 }

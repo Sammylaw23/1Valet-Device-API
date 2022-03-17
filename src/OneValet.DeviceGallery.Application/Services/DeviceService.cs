@@ -1,15 +1,19 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using OneValet.DeviceGallery.Application.Common.Exceptions;
 using OneValet.DeviceGallery.Application.DTOs.Device;
 using OneValet.DeviceGallery.Application.Interfaces;
 using OneValet.DeviceGallery.Application.Interfaces.Services;
 using OneValet.DeviceGallery.Application.Wrappers;
 using OneValet.DeviceGallery.Domain.Entities;
+using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http.Abstractions;
+
 
 namespace OneValet.DeviceGallery.Application.Services
 {
@@ -31,39 +35,21 @@ namespace OneValet.DeviceGallery.Application.Services
             await _repositoryProvider.DeviceRepository.CreateDeviceAsync(device);
             await _repositoryProvider.SaveChangesAsync();
             return new Response<DeviceResponse>(_mapper.Map<DeviceResponse>(device));
-            //var device = new Domain.Entities.Device
-            //{
-            //    Name = deviceRequest.Name,
-            //    //DeviceType = DeviceType
-            //    TemperatureC = deviceRequest.TemperatureC,
-            //    Online = deviceRequest.Online,
-            //    IconBase64String = deviceRequest.IconBase64String
-            //};
-
-            //return new Response<DeviceResponse>(new DeviceResponse
-            //{
-            //    DeviceId = device.Id,   
-            //    Name = deviceRequest.Name,
-            //    IconBase64String= deviceRequest.IconBase64String,
-            //    Online = deviceRequest.Online,
-            //    Status = device.Status,
-            //    TemperatureC = device.TemperatureC
-            //}, "Success"); //Use Automapper
-
-
-            //var device = new Domain.Entities.Device
-            //{
-            //    Name = "Nokia 7 Plus",
-            //    //DeviceType = DeviceType
-            //    TemperatureC = 15.1,
-            //    Online = true,
-            //    IconBase64String = "dwjkjkjkjhjHHghKhHhjkHkGHGhgJhgHhjHJhgHh",
-            //};
         }
-        public async Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync()
+        public async Task<Response<PagedList<IEnumerable<DeviceResponse>>>> GetAllDevicesAsync(DeviceParameters deviceParameters)
         {
-            var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync();
-            return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
+            try
+            {
+                //Task<PagedList<Domain.Entities.Device>>
+                var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync(deviceParameters);
+                return new Response<PagedList<IEnumerable<DeviceResponse>>>(_mapper.Map<PagedList<IEnumerable<DeviceResponse>>>(devices));
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
 
         public async Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id)
@@ -111,5 +97,15 @@ namespace OneValet.DeviceGallery.Application.Services
             _repositoryProvider.DeviceRepository.DeleteDevice(device);
             await _repositoryProvider.SaveChangesAsync();
         }
+
+        public async Task<Response<IEnumerable<DeviceResponse>>> AddMultipleDevicesAsync(IEnumerable<DeviceRequest> deviceRequests)
+        {
+            var devices = _mapper.Map<IEnumerable<Domain.Entities.Device>>(deviceRequests);
+            await _repositoryProvider.DeviceRepository.AddMultipleDevicesAsync(devices);
+            //await _repositoryProvider.SaveChangesAsync(); //INFO: BulkInsert saves the entities
+            return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
+        }
+
+
     }
 }

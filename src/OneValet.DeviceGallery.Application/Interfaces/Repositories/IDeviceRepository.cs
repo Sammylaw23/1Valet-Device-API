@@ -1,4 +1,7 @@
-﻿using System;
+﻿using OneValet.DeviceGallery.Application.DTOs.Device;
+using OneValet.DeviceGallery.Application.Wrappers;
+using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +12,15 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Repositories
     public  interface IDeviceRepository
     {
         Task CreateDeviceAsync(Domain.Entities.Device device);
+
+        Task AddMultipleDevicesAsync(IEnumerable<Domain.Entities.Device> devices);
+
         Task<Domain.Entities.Device> GetDeviceByIdAsync(int id);
         //Task<Domain.Entities.Device> GetDeviceByDeviceNoAsync(int deviceId);
-        Task<IEnumerable<Domain.Entities.Device>> GetAllDeviceAsync();
+        Task<PagedList<Domain.Entities.Device>> GetAllDeviceAsync(DeviceParameters deviceParameters);
         void UpdateDevice(Domain.Entities.Device device);
         void DeleteDevice(Domain.Entities.Device device);
+
+
     }
 }

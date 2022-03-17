@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OneValet.DeviceGallery.Application.DTOs.Device;
 using OneValet.DeviceGallery.Domain.Entities;
+using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace OneValet.DeviceGallery.Application.Common.Mappings
         {
             CreateMap<Device, DeviceResponse>();
             CreateMap<DeviceRequest, Device>();
+            CreateMap<PagedList<Device>, PagedList<DeviceResponse>>();
+
 
         }
     }

@@ -2,6 +2,8 @@
 using OneValet.DeviceGallery.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
+using Newtonsoft.Json;
 
 namespace OneValet.DeviceGallery.API.Controllers
 {
@@ -19,9 +21,11 @@ namespace OneValet.DeviceGallery.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetDevices()
+        public async Task<IActionResult> GetDevices([FromQuery] DeviceParameters deviceParameters)
         {
-            return Ok(await _deviceService.GetAllDevicesAsync());
+            var devices = await _deviceService.GetAllDevicesAsync(deviceParameters);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(devices.Data.MetaData));
+            return Ok(devices);
         }
 
         [HttpGet("{id}")]
@@ -35,6 +39,17 @@ namespace OneValet.DeviceGallery.API.Controllers
             var response = await _deviceService.AddDeviceAsync(request);
             return CreatedAtAction(nameof(GetDeviceById), new { id = response.Data }, response);
         }
+
+        [HttpPost("bulk")]
+        public async Task<IActionResult> AddMultipleDevices(IEnumerable<DeviceRequest> requests)
+        {
+            //return Ok(await _deviceService.AddDeviceAsync(request));
+            var response = await _deviceService.AddMultipleDevicesAsync(requests);
+            return Ok(response);
+            //return CreatedAtAction(nameof(GetDeviceById), new { id = response.Data }, response);
+        }
+
+
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDevice(int id, DeviceRequest request)
@@ -58,7 +73,7 @@ namespace OneValet.DeviceGallery.API.Controllers
         }
 
 
-       
+
 
     }
 }
