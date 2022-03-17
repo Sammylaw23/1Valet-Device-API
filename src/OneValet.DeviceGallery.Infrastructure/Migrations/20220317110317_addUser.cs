@@ -4,7 +4,7 @@
 
 namespace OneValet.DeviceGallery.Infrastructure.Migrations
 {
-    public partial class Initial : Migration
+    public partial class addUser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,12 +47,20 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DeviceUsers", x => x.Id);
                 });
+
+            migrationBuilder.InsertData(
+                table: "DeviceUsers",
+                columns: new[] { "Id", "Email", "EmailConfirmed", "FirstName", "LastName", "Password", "UserName" },
+                values: new object[] { 1, "onevalet@gmail.com", false, "One", "Valet", "sapass123$", "onevalet" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

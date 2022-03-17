@@ -61,16 +61,15 @@ try
     builder.Services.AddAuthentication("BasicAuthentication")
         .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
     builder.Services.AddScoped<IApplicationDataSeed, ApplicationDataSeed>();
+    //builder.Services.AddTransient<ApplicationDataSeed>();
 
     // Wait 30 seconds for graceful shutdown
     //builder.Host.ConfigureHostOptions(o => o.ShutdownTimeout = TimeSpan.FromSeconds(30));
 
-    //var temp = builder.Services.Where(x => x.ServiceType.Name == "IUserService");
-
-    //var userService = builder.Services.GetRequiredService<IUserService>();
 
 
     var app = builder.Build();
+
     app.UseSerilogRequestLogging();
     app.Logger.LogInformation("The application started");
     // Configure the HTTP request pipeline.
@@ -85,31 +84,29 @@ try
     app.UseAuthorization();
     app.MapControllers();
     app.UseApiErrorHandler();
-    //app.ApplicationServices.GetRequiredService<IUserService>();
-
-    
-    using (var scope = app.Services.CreateScope())
-    {
-        var appServices = scope.ServiceProvider;
-        var applicationDbContext = appServices.GetRequiredService<DeviceDbContext>();
-        applicationDbContext.Database.Migrate();
-
-        var userService = appServices.GetRequiredService<IUserService>();
-        var deviceService = appServices.GetRequiredService<DeviceService>();
-        var repositoryProvider = appServices.GetRequiredService<RepositoryProvider>();
-        //await appServices.GetRequiredService<IApplicationDataSeed>()
-        //    .DefaultUsersAsync(userService, repositoryProvider);
-
-        await ApplicationDataSeed.DefaultUsersAsync(userService, repositoryProvider);
-        await ApplicationDataSeed.DefaultDeviceTypesAsync(applicationDbContext);
-        await ApplicationDataSeed.DefaultDevicesAsync(applicationDbContext);
-        Log.Information("Finished Seeding Default Data");
-
-    }
-
-
-
     app.Run();
+
+
+    //using (var scope = app.Services.CreateScope())
+    //{
+    //    var appServices = scope.ServiceProvider;
+    //    var applicationDbContext = appServices.GetRequiredService<DeviceDbContext>();
+    //    applicationDbContext.Database.Migrate();
+
+    //    var userService = appServices.GetRequiredService<IUserService>();
+    //    var deviceService = appServices.GetRequiredService<DeviceService>();
+    //    var repositoryProvider = appServices.GetRequiredService<RepositoryProvider>();
+    //    //await appServices.GetRequiredService<IApplicationDataSeed>()
+    //    //    .DefaultUsersAsync(userService, repositoryProvider);
+
+    //    //await ApplicationDataSeed.DefaultUsersAsync(userService, repositoryProvider);
+    //    //await ApplicationDataSeed.DefaultDeviceTypesAsync(applicationDbContext);
+    //    //await ApplicationDataSeed.DefaultDevicesAsync(applicationDbContext);
+    //    Log.Information("Finished Seeding Default Data");
+
+    //}
+
+
 
 
 }
@@ -122,3 +119,4 @@ finally
     Log.Information("Shut down complete");
     Log.CloseAndFlush();
 }
+

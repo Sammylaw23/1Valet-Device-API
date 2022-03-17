@@ -11,7 +11,7 @@ namespace OneValet.DeviceGallery.Domain.Entities
     public class Device
     {
         //private string? _status;
-        public int Id { get; private set; }
+        public int Id { get; /*private*/ set; }
         public string Name { get; set; }
         public double TemperatureC { get; set; }
         public string IconBase64String { get; set; }

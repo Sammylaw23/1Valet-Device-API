@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using OneValet.DeviceGallery.Application.DTOs.User;
 using OneValet.DeviceGallery.Application.Interfaces;
 using OneValet.DeviceGallery.Application.Interfaces.Services;
@@ -23,6 +25,20 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence
         //    _userService = userService;
         //    _repositoryProvider = repositoryProvider;
         //}
+
+
+        //public static void SeedData(IHost app)
+        //{
+        //    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+        //    using (var scope = scopedFactory.CreateScope())
+        //    {
+        //        var service = scope.ServiceProvider.GetService<ApplicationDataSeed>();
+        //        service.d();
+        //    }
+
+        //}
+
         public static async Task DefaultUsersAsync(IUserService _userService, IRepositoryProvider _repositoryProvider)
         {
             var defaultUser = new UserRequest

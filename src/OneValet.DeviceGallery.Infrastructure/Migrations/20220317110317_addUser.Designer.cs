@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OneValet.DeviceGallery.Infrastructure.Contexts;
 
 #nullable disable
@@ -11,8 +12,8 @@ using OneValet.DeviceGallery.Infrastructure.Contexts;
 namespace OneValet.DeviceGallery.Infrastructure.Migrations
 {
     [DbContext(typeof(DeviceDbContext))]
-    [Migration("20220315103426_Initial3")]
-    partial class Initial3
+    [Migration("20220317110317_addUser")]
+    partial class addUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,13 +80,17 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -106,6 +111,18 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeviceUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "onevalet@gmail.com",
+                            EmailConfirmed = false,
+                            FirstName = "One",
+                            LastName = "Valet",
+                            Password = "sapass123$",
+                            UserName = "onevalet"
+                        });
                 });
 #pragma warning restore 612, 618
         }
