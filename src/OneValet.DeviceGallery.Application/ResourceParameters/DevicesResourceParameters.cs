@@ -2,7 +2,7 @@
 {
     public class DevicesResourceParameters
     {
-        public string Online { get; set; }
-        public string SearchQuery { get; set; }
+        public string Online { get; set; } = string.Empty;
+        public string SearchQuery { get; set; } = string.Empty;
     }
 }

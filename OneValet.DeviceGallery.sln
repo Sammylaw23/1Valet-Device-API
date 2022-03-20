@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneValet.DeviceGallery.Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneValet.DeviceGallery.Shared", "src\OneValet.DeviceGallery.Shared\OneValet.DeviceGallery.Shared.csproj", "{96944D37-EF27-46CA-BC6B-77A21937C50E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C76FBB38-B5FB-4341-A72B-B54850242029}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
