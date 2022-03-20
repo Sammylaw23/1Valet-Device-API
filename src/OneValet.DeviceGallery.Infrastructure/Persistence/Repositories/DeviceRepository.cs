@@ -11,6 +11,7 @@ using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
 using OneValet.DeviceGallery.Application.Wrappers;
 using OneValet.DeviceGallery.Application.DTOs.Device;
 using EFCore.BulkExtensions;
+using OneValet.DeviceGallery.Application.ResourceParameters;
 
 namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 {
@@ -22,20 +23,64 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             await AddAsync(device);
         }
 
+        public async Task<IEnumerable<Device>> GetAllDeviceAsync()
+        {
+            var devices = await Get()
+              .OrderBy(x => x.Id)
+              .ToListAsync();
+            return devices;
+        }
 
         public async Task<PagedList<Domain.Entities.Device>> GetAllDeviceAsync(DeviceParameters deviceParameters)
         {
-             var devices = await Get()
-                .OrderBy(x => x.Id)                
-                .ToListAsync();
+            var devices = await Get()
+               .OrderBy(x => x.Id)
+               .ToListAsync();
 
-            return PagedList<Domain.Entities.Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
-
+            var res = PagedList<Domain.Entities.Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
+            return res;
             //await Get(includeProperties: "Currency").ToListAsync();
         }
 
+        public async Task<IEnumerable<Device>> GetAllDeviceAsync(DevicesResourceParameters devicesResourceParameters)
+        {
+            if (devicesResourceParameters == null)
+                throw new ArgumentNullException(nameof(devicesResourceParameters));
 
-   
+            if (string.IsNullOrWhiteSpace(devicesResourceParameters.Online) && string.IsNullOrWhiteSpace(devicesResourceParameters.SearchQuery))
+            {
+                return await GetAllDeviceAsync();
+            }
+
+            var collection = _dbContext.Devices as IQueryable<Device>;
+
+            if (!string.IsNullOrWhiteSpace(devicesResourceParameters.Online))
+            {
+                var online = devicesResourceParameters.Online.Trim();
+                collection = collection.Where(x => x.Online == bool.Parse(online));
+            }
+            if (!string.IsNullOrWhiteSpace(devicesResourceParameters.SearchQuery))
+            {
+                var searchQuery = devicesResourceParameters.SearchQuery.Trim();
+                collection = collection.Where(x => x.Name.Contains( searchQuery));
+            }
+
+            return await collection.ToListAsync();
+        }
+
+        //public async Task<PagedList<Domain.Entities.Device>> GetAllDeviceAsync(DeviceParameters deviceParameters)
+        //{
+        //     var devices = await Get()
+        //        .OrderBy(x => x.Id)                
+        //        .ToListAsync();
+
+        //    return PagedList<Domain.Entities.Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
+
+        //    //await Get(includeProperties: "Currency").ToListAsync();
+        //}
+
+
+
 
 
 
@@ -62,6 +107,7 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 
         public async Task AddMultipleDevicesAsync(IEnumerable<Device> devices)
             => await _dbContext.BulkInsertAsync(devices.ToList());
-        
+
+
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
 using Newtonsoft.Json;
+using OneValet.DeviceGallery.Application.ResourceParameters;
 
 namespace OneValet.DeviceGallery.API.Controllers
 {
@@ -20,14 +21,22 @@ namespace OneValet.DeviceGallery.API.Controllers
             _deviceService = deviceService;
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> GetDevices([FromQuery] DeviceParameters deviceParameters)
+        //{
+        //    var devices = await _deviceService.GetAllDevicesAsync(deviceParameters);
+        //    Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(devices.Data.MetaData));
+        //    return Ok(devices);
+        //}
+
         [HttpGet]
-        public async Task<IActionResult> GetDevices([FromQuery] DeviceParameters deviceParameters)
+        public async Task<IActionResult> GetDevices([FromQuery] DevicesResourceParameters devicesResourceParameters)
         {
-            var devices = await _deviceService.GetAllDevicesAsync(deviceParameters);
-            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(devices.Data.MetaData));
+            var devices = await _deviceService.GetAllDevicesAsync(devicesResourceParameters);
             return Ok(devices);
         }
 
+        
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDeviceById(int id) =>
            Ok(await _deviceService.GetDeviceByIdAsync(id));

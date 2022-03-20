@@ -9,6 +9,10 @@ namespace OneValet.DeviceGallery.Domain.Entities.RequestFeatures
 
     public class PagedList<T> : List<T>
     {
+        public PagedList()
+        {
+
+        }
         public MetaData MetaData { get; set; }
         public PagedList(List<T> items, int count, int pageNumber, int pageSize)
         {

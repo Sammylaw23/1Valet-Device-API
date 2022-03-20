@@ -1,4 +1,5 @@
 ﻿using OneValet.DeviceGallery.Application.DTOs.Device;
+using OneValet.DeviceGallery.Application.ResourceParameters;
 using OneValet.DeviceGallery.Application.Wrappers;
 using OneValet.DeviceGallery.Domain.Entities.RequestFeatures;
 using System;
@@ -19,7 +20,13 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Services
         Task UpdateDeviceAsync(int id, DeviceRequest deviceRequest);
         Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id);
 
-        Task<Response<PagedList<IEnumerable<DeviceResponse>>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
+        Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync(DevicesResourceParameters devicesResourceParameters);
+        //Task<Response<PagedList<DeviceResponse>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
+       
+
+        //Task<Response<PagedList<IEnumerable<DeviceResponse>>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
+
+
         //Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
 
         Task ToggleAvailability(int id);

@@ -60,7 +60,7 @@ try
     builder.Services.AddSwaggerGen();
     builder.Services.AddAuthentication("BasicAuthentication")
         .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
-    builder.Services.AddScoped<IApplicationDataSeed, ApplicationDataSeed>();
+    //builder.Services.AddScoped<IApplicationDataSeed, ApplicationDataSeed>();
     //builder.Services.AddTransient<ApplicationDataSeed>();
 
     // Wait 30 seconds for graceful shutdown

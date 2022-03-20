@@ -16,7 +16,8 @@ namespace OneValet.DeviceGallery.Application.Common.Mappings
         {
             CreateMap<Device, DeviceResponse>();
             CreateMap<DeviceRequest, Device>();
-            CreateMap<PagedList<Device>, PagedList<DeviceResponse>>();
+            //CreateMap<Device, DeviceResponse>();
+            //CreateMap<PagedList<Device>, PagedList<DeviceResponse>>();
 
 
         }

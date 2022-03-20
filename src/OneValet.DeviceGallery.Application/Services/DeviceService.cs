@@ -13,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http.Abstractions;
-
+using OneValet.DeviceGallery.Application.ResourceParameters;
 
 namespace OneValet.DeviceGallery.Application.Services
 {
@@ -36,21 +36,33 @@ namespace OneValet.DeviceGallery.Application.Services
             await _repositoryProvider.SaveChangesAsync();
             return new Response<DeviceResponse>(_mapper.Map<DeviceResponse>(device));
         }
-        public async Task<Response<PagedList<IEnumerable<DeviceResponse>>>> GetAllDevicesAsync(DeviceParameters deviceParameters)
+        public async Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync(DevicesResourceParameters devicesResourceParameters)
         {
-            try
-            {
-                //Task<PagedList<Domain.Entities.Device>>
-                var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync(deviceParameters);
-                return new Response<PagedList<IEnumerable<DeviceResponse>>>(_mapper.Map<PagedList<IEnumerable<DeviceResponse>>>(devices));
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-            
+            var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync(devicesResourceParameters);
+            return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
         }
+
+        //public async Task<Response<PagedList<DeviceResponse>>> GetAllDevicesAsync(DeviceParameters deviceParameters)
+        //{
+        //    try
+        //    {
+        //        //Task<PagedList<Domain.Entities.Device>>
+        //        var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync(deviceParameters);
+        //        //var temp = PagedList<DeviceResponse>>(_mapper.Map<PagedList<DeviceResponse>
+
+        //        return new Response<PagedList<DeviceResponse>>(_mapper.Map<PagedList<DeviceResponse>>(devices));
+
+        //        //    var temp = _mapper.Map<PagedList<DeviceResponse>>(devices);
+        //        //    var response = new Response<PagedList<DeviceResponse>>(temp);
+        //        //    return response;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        throw;
+        //    }
+
+        //}
 
         public async Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id)
         {
