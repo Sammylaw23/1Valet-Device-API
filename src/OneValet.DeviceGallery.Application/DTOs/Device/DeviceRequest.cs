@@ -12,5 +12,6 @@ namespace OneValet.DeviceGallery.Application.DTOs.Device
         public double TemperatureC { get; set; }
         public string? IconBase64String { get; set; }
         public bool IsOnline { get; set; }
+        public int DeviceTypeId { get; set; }
     }
 }

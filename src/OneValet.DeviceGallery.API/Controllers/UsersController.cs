@@ -21,7 +21,7 @@ namespace OneValet.DeviceGallery.API.Controllers
         public async Task<IActionResult> RegisterUser(UserRequest user)
         {
             var response = await _userService.AddUserAsync(user);
-            return CreatedAtAction(nameof(GetUserById), new { id = response.Data.Id }, response);
+            return Ok(response);
         }
 
 
@@ -43,13 +43,7 @@ namespace OneValet.DeviceGallery.API.Controllers
         {
             return Ok(await _userService.GetAllUsersAsync());
         }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateUser(UserRequest userRequest)
-        {
-            return Ok(await _userService.AddUserAsync(userRequest));
-        }
-
+        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

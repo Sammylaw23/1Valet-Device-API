@@ -20,5 +20,6 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Repositories
         Task<IEnumerable<Domain.Entities.Device>> GetAllDeviceAsync(DevicesResourceParameters devicesResourceParameters);
         void UpdateDevice(Domain.Entities.Device device);
         void DeleteDevice(Domain.Entities.Device device);
+        Task<bool> DeviceTypeExistAsync(int deviceTypeId);
     }
 }

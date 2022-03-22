@@ -39,8 +39,9 @@ namespace OneValet.DeviceGallery.Infrastructure.Contexts
             device.HasKey(x => x.Id);
             device.Property(x => x.Id).UseIdentityColumn();
             device.Property(x => x.DeviceTypeId).ValueGeneratedNever();
-            device.Property(x => x.Name).HasMaxLength(60);
             device.Property(x => x.IconBase64String).HasMaxLength(255);
+            device.Property(x => x.Name).HasMaxLength(60);
+            device.HasIndex(x => x.Name).IsUnique();
 
             device.HasData(DatabaseSeeder.SeedDevices());
 

@@ -82,6 +82,11 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
         public async Task AddMultipleDevicesAsync(IEnumerable<Device> devices)
             => await _dbContext.BulkInsertAsync(devices.ToList());
 
-
+        public async Task<bool> DeviceTypeExistAsync(int deviceTypeId)
+        {
+            return await _dbContext.DeviceTypes.AnyAsync(x => x.DeviceTypeId == deviceTypeId);
+            //var collection = _dbContext.DeviceTypes as IQueryable<DeviceType>;
+            //collection.Select(x => x.DeviceTypeId);
+        }
     }
 }

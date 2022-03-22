@@ -36,7 +36,8 @@ namespace OneValet.DeviceGallery.API.Controllers
         public async Task<IActionResult> AddDeviceAsync(DeviceRequest request)
         {
             var response = await _deviceService.AddDeviceAsync(request);
-            return CreatedAtAction(nameof(GetDeviceByIdAsync), new { id = response.Data }, response);
+            return Ok(response);
+                //CreatedAtAction(nameof(GetDeviceByIdAsync), new { id = response.Data }, response);
         }
 
         [HttpPost("bulk")]

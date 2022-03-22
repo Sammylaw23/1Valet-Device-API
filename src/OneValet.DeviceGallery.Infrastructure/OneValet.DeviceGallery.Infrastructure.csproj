@@ -26,8 +26,4 @@
     <ProjectReference Include="..\OneValet.DeviceGallery.Domain\OneValet.DeviceGallery.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Shared\" />
-  </ItemGroup>
-
 </Project>

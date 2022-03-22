@@ -29,6 +29,11 @@ namespace OneValet.DeviceGallery.Application.Services
         }
         public async Task<Response<DeviceResponse>> AddDeviceAsync(DeviceRequest deviceRequest)
         {
+            var deviceTypeExist = await _repositoryProvider.DeviceRepository.DeviceTypeExistAsync(deviceRequest.DeviceTypeId);
+            if (!deviceTypeExist)
+            {
+                throw new ApiException($"'{deviceRequest.DeviceTypeId}' is not a valid device type");
+            }
             var device = _mapper.Map<Domain.Entities.Device>(deviceRequest);
             await _repositoryProvider.DeviceRepository.CreateDeviceAsync(device);
             await _repositoryProvider.SaveChangesAsync();
