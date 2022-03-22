@@ -56,21 +56,21 @@ namespace OneValet.DeviceGallery.API.UnitTests.MockData
                     Name = "Nokia 7 Plus",
                     TemperatureC =  49,
                     IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                    Online = true
+                    IsOnline = true
                   },
                   new Device {
                       Id=12,
                     Name = "iPad 11",
                     TemperatureC =  67,
                     IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                    Online = false
+                    IsOnline = false
                   },
                   new Device {
                       Id=13,
                     Name = "HP Elitebook",
                     TemperatureC =  72,
                     IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                    Online = false
+                    IsOnline = false
                   }
                   //,
                   //new Device {
@@ -78,35 +78,35 @@ namespace OneValet.DeviceGallery.API.UnitTests.MockData
                   //  Name = "Samsung Tablet",
                   //  TemperatureC =  31,
                   //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  Online = false
+                  //  IsOnline = false
                   //},
                   //new Device {
                   //    Id=5,
                   //  Name = "DELL 205",
                   //  TemperatureC =  55,
                   //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  Online = false
+                  //  IsOnline = false
                   //},
                   //new Device {
                   //    Id=6,
                   //  Name = "Tecno Spark 6",
                   //  TemperatureC =  84,
                   //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  Online = false
+                  //  IsOnline = false
                   //},
                   //new Device {
                   //    Id=7,
                   //  Name = "iPhone 13 Pro Max",
                   //  TemperatureC =  50,
                   //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  Online = true
+                  //  IsOnline = true
                   //},
                   //new Device {
                   //    Id = 8,
                   //  Name = "Nokia 3310",
                   //  TemperatureC =  37,
                   //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  Online = false
+                  //  IsOnline = false
                   //}
             };
         }
@@ -118,7 +118,7 @@ namespace OneValet.DeviceGallery.API.UnitTests.MockData
                 Name = "Nokia 3310",
                 TemperatureC = 49,
                 IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                Online = true
+                IsOnline = true
             };
         }
     }

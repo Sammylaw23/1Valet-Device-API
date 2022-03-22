@@ -4,7 +4,7 @@
 
 namespace OneValet.DeviceGallery.Infrastructure.Migrations
 {
-    public partial class addUser : Migration
+    public partial class initfgggtuiturjdgh : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,8 +17,8 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TemperatureC = table.Column<double>(type: "float", nullable: false),
                     IconBase64String = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Online = table.Column<bool>(type: "bit", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    IsOnline = table.Column<bool>(type: "bit", nullable: false),
+                    DeviceTypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,9 +58,34 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "DeviceTypes",
+                columns: new[] { "DeviceTypeId", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, "A pocket-sized device", "Phone" },
+                    { 2, "A palm-sized device", "Tablet" },
+                    { 3, "A personal computer", "PC" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "DeviceUsers",
                 columns: new[] { "Id", "Email", "EmailConfirmed", "FirstName", "LastName", "Password", "UserName" },
                 values: new object[] { 1, "onevalet@gmail.com", false, "One", "Valet", "sapass123$", "onevalet" });
+
+            migrationBuilder.InsertData(
+                table: "Devices",
+                columns: new[] { "Id", "DeviceTypeId", "IconBase64String", "IsOnline", "Name", "TemperatureC" },
+                values: new object[,]
+                {
+                    { 1, 1, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", true, "Nokia 7 Plus", 49.0 },
+                    { 2, 2, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", false, "iPad 11", 67.0 },
+                    { 3, 3, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", false, "HP Elitebook", 72.0 },
+                    { 4, 2, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", false, "Samsung Tablet", 31.0 },
+                    { 5, 3, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", false, "DELL 205", 55.0 },
+                    { 6, 1, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", false, "Tecno Spark 6", 84.0 },
+                    { 7, 1, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", true, "iPhone 13 Pro Max", 50.0 },
+                    { 8, 1, "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh", false, "Nokia 3310", 37.0 }
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

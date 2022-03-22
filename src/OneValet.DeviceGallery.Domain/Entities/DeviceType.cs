@@ -12,7 +12,6 @@ namespace OneValet.DeviceGallery.Domain.Entities
         public string Name { get; set; } //(Phone, tablet, PC), 
         public string Description { get; set; }
 
-        //public ICollection<Device> Devices { get; set; }
 
     }
 }

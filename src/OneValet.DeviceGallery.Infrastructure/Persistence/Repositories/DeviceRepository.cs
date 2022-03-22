@@ -57,7 +57,7 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             if (!string.IsNullOrWhiteSpace(devicesResourceParameters.Online))
             {
                 var online = devicesResourceParameters.Online.Trim();
-                collection = collection.Where(x => x.Online == bool.Parse(online));
+                collection = collection.Where(x => x.IsOnline == bool.Parse(online));
             }
             if (!string.IsNullOrWhiteSpace(devicesResourceParameters.SearchQuery))
             {

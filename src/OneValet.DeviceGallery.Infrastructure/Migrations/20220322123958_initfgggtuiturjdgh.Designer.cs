@@ -12,8 +12,8 @@ using OneValet.DeviceGallery.Infrastructure.Contexts;
 namespace OneValet.DeviceGallery.Infrastructure.Migrations
 {
     [DbContext(typeof(DeviceDbContext))]
-    [Migration("20220317111001_addUser3")]
-    partial class addUser3
+    [Migration("20220322123958_initfgggtuiturjdgh")]
+    partial class initfgggtuiturjdgh
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,18 +33,17 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("DeviceTypeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("IconBase64String")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Online")
+                    b.Property<bool>("IsOnline")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -59,73 +58,73 @@ namespace OneValet.DeviceGallery.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            DeviceTypeId = 1,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = true,
                             Name = "Nokia 7 Plus",
-                            Online = true,
-                            Status = "Offline",
                             TemperatureC = 49.0
                         },
                         new
                         {
                             Id = 2,
+                            DeviceTypeId = 2,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = false,
                             Name = "iPad 11",
-                            Online = false,
-                            Status = "Offline",
                             TemperatureC = 67.0
                         },
                         new
                         {
                             Id = 3,
+                            DeviceTypeId = 3,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = false,
                             Name = "HP Elitebook",
-                            Online = false,
-                            Status = "Offline",
                             TemperatureC = 72.0
                         },
                         new
                         {
                             Id = 4,
+                            DeviceTypeId = 2,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = false,
                             Name = "Samsung Tablet",
-                            Online = false,
-                            Status = "Offline",
                             TemperatureC = 31.0
                         },
                         new
                         {
                             Id = 5,
+                            DeviceTypeId = 3,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = false,
                             Name = "DELL 205",
-                            Online = false,
-                            Status = "Offline",
                             TemperatureC = 55.0
                         },
                         new
                         {
                             Id = 6,
+                            DeviceTypeId = 1,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = false,
                             Name = "Tecno Spark 6",
-                            Online = false,
-                            Status = "Offline",
                             TemperatureC = 84.0
                         },
                         new
                         {
                             Id = 7,
+                            DeviceTypeId = 1,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = true,
                             Name = "iPhone 13 Pro Max",
-                            Online = true,
-                            Status = "Offline",
                             TemperatureC = 50.0
                         },
                         new
                         {
                             Id = 8,
+                            DeviceTypeId = 1,
                             IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
+                            IsOnline = false,
                             Name = "Nokia 3310",
-                            Online = false,
-                            Status = "Offline",
                             TemperatureC = 37.0
                         });
                 });

@@ -38,7 +38,7 @@ namespace OneValet.DeviceGallery.API.UnitTests.Services
         //    ///Arrange
         //    var devicesResourceParameters = new DevicesResourceParameters()
         //    {
-        //        Online = "",
+        //        IsOnline = "",
         //        SearchQuery = ""
         //    };
 
@@ -55,21 +55,21 @@ namespace OneValet.DeviceGallery.API.UnitTests.Services
         //            Name = "Nokia 7 Plus",
         //            TemperatureC =  49,
         //            IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-        //            Online = true
+        //            IsOnline = true
         //          },
         //          new Device {
         //              Id=12,
         //            Name = "iPad 11",
         //            TemperatureC =  67,
         //            IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-        //            Online = false
+        //            IsOnline = false
         //          },
         //          new Device {
         //              Id=13,
         //            Name = "HP Elitebook",
         //            TemperatureC =  72,
         //            IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-        //            Online = false
+        //            IsOnline = false
         //          }
         //    };
 

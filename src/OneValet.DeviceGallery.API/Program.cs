@@ -66,25 +66,26 @@ try
     // Wait 30 seconds for graceful shutdown
     //builder.Host.ConfigureHostOptions(o => o.ShutdownTimeout = TimeSpan.FromSeconds(30));
 
+   
+        var app = builder.Build();
 
 
-    var app = builder.Build();
 
-    app.UseSerilogRequestLogging();
-    app.Logger.LogInformation("The application started");
-    // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
-    app.UseHttpsRedirection();
-    app.UseRouting();
-    app.UseAuthentication();
-    app.UseAuthorization();
-    app.MapControllers();
-    app.UseApiErrorHandler();
-    app.Run();
+        app.UseSerilogRequestLogging();
+        app.Logger.LogInformation("The application started");
+        // Configure the HTTP request pipeline.
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+        app.UseHttpsRedirection();
+        app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
+        app.MapControllers();
+        app.UseApiErrorHandler();
+        app.Run();
 
 
     //using (var scope = app.Services.CreateScope())
@@ -108,15 +109,21 @@ try
 
 
 
-
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Unhandled exception");
+    //  Ignore StopTheHostException.
+    string type = ex.GetType().Name;
+    if (type.Equals("StopTheHostException", StringComparison.Ordinal))
+    {
+        throw;
+    }
+    Log.Error(ex, "Stopped program because of exception");
 }
 finally
 {
     Log.Information("Shut down complete");
     Log.CloseAndFlush();
 }
+
 

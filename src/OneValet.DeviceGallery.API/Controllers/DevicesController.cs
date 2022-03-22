@@ -21,22 +21,13 @@ namespace OneValet.DeviceGallery.API.Controllers
             _deviceService = deviceService;
         }
 
-        //[HttpGet]
-        //public async Task<IActionResult> GetDevices([FromQuery] DeviceParameters deviceParameters)
-        //{
-        //    var devices = await _deviceService.GetAllDevicesAsync(deviceParameters);
-        //    Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(devices.Data.MetaData));
-        //    return Ok(devices);
-        //}
-
         [HttpGet]
         public async Task<IActionResult> GetDevicesAsync([FromQuery] DevicesResourceParameters devicesResourceParameters)
         {
             var devices = await _deviceService.GetAllDevicesAsync(devicesResourceParameters);
             return Ok(devices);
         }
-
-        
+                
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDeviceByIdAsync(int id) =>
            Ok(await _deviceService.GetDeviceByIdAsync(id));
@@ -44,7 +35,6 @@ namespace OneValet.DeviceGallery.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddDeviceAsync(DeviceRequest request)
         {
-            //return Ok(await _deviceService.AddDeviceAsync(request));
             var response = await _deviceService.AddDeviceAsync(request);
             return CreatedAtAction(nameof(GetDeviceByIdAsync), new { id = response.Data }, response);
         }
@@ -52,13 +42,9 @@ namespace OneValet.DeviceGallery.API.Controllers
         [HttpPost("bulk")]
         public async Task<IActionResult> AddMultipleDevicesAsync(IEnumerable<DeviceRequest> requests)
         {
-            //return Ok(await _deviceService.AddDeviceAsync(request));
             var response = await _deviceService.AddMultipleDevicesAsync(requests);
             return Ok(response);
-            //return CreatedAtAction(nameof(GetDeviceById), new { id = response.Data }, response);
         }
-
-
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateDeviceAsync(int id, DeviceRequest request)
@@ -80,9 +66,6 @@ namespace OneValet.DeviceGallery.API.Controllers
             await _deviceService.ToggleAvailability(id);
             return NoContent();
         }
-
-
-
 
     }
 }

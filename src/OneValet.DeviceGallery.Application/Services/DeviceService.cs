@@ -30,8 +30,6 @@ namespace OneValet.DeviceGallery.Application.Services
         public async Task<Response<DeviceResponse>> AddDeviceAsync(DeviceRequest deviceRequest)
         {
             var device = _mapper.Map<Domain.Entities.Device>(deviceRequest);
-            if (deviceRequest.Online)
-                device.Status = "Available";
             await _repositoryProvider.DeviceRepository.CreateDeviceAsync(device);
             await _repositoryProvider.SaveChangesAsync();
             return new Response<DeviceResponse>(_mapper.Map<DeviceResponse>(device));
@@ -42,27 +40,7 @@ namespace OneValet.DeviceGallery.Application.Services
             return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
         }
 
-        //public async Task<Response<PagedList<DeviceResponse>>> GetAllDevicesAsync(DeviceParameters deviceParameters)
-        //{
-        //    try
-        //    {
-        //        //Task<PagedList<Domain.Entities.Device>>
-        //        var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync(deviceParameters);
-        //        //var temp = PagedList<DeviceResponse>>(_mapper.Map<PagedList<DeviceResponse>
 
-        //        return new Response<PagedList<DeviceResponse>>(_mapper.Map<PagedList<DeviceResponse>>(devices));
-
-        //        //    var temp = _mapper.Map<PagedList<DeviceResponse>>(devices);
-        //        //    var response = new Response<PagedList<DeviceResponse>>(temp);
-        //        //    return response;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        throw;
-        //    }
-
-        //}
 
         public async Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id)
         {
@@ -74,8 +52,6 @@ namespace OneValet.DeviceGallery.Application.Services
             var device = await _repositoryProvider.DeviceRepository.GetDeviceByIdAsync(id);
             if (device == null)
                 throw new NotFoundException();
-            //if (device.Name != deviceRequest.Name) //You can't do this. It is possible the Name property is what was changed in the request
-            //    throw new ArgumentException("Invalid device name.");
             _mapper.Map(deviceRequest, device);
             _repositoryProvider.DeviceRepository.UpdateDevice(device);
             await _repositoryProvider.SaveChangesAsync();
@@ -86,17 +62,7 @@ namespace OneValet.DeviceGallery.Application.Services
             var device = await _repositoryProvider.DeviceRepository.GetDeviceByIdAsync(id);
             if (device == null)
                 throw new NotFoundException();
-            if (device.Online)
-            {
-                device.Online = false;
-                device.Status = "Offline"; //TODO: Let Status be updated automatically once Online property is set so you don't have to hardcode in different parts of the application
-            }
-            else
-            {
-                device.Online = true;
-                device.Status = "Available"; //TODO: Let Status be updated automatically once Online property is set so you don't have to hardcode in different parts of the application
-            }
-
+            device.IsOnline = (device.IsOnline) ? false : true;
             _repositoryProvider.DeviceRepository.UpdateDevice(device);
             await _repositoryProvider.SaveChangesAsync();
         }
@@ -114,7 +80,6 @@ namespace OneValet.DeviceGallery.Application.Services
         {
             var devices = _mapper.Map<IEnumerable<Domain.Entities.Device>>(deviceRequests);
             await _repositoryProvider.DeviceRepository.AddMultipleDevicesAsync(devices);
-            //await _repositoryProvider.SaveChangesAsync(); //INFO: BulkInsert saves the entities
             return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
         }
 

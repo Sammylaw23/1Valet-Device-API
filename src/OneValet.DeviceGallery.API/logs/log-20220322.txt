@@ -17,3 +17,100 @@
 2022-03-22 00:10:40.540 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - - - 200 628 image/png 19.1554ms
 2022-03-22 00:10:40.568 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 135.4130 ms
 2022-03-22 00:10:40.570 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 138.1179ms
+2022-03-22 03:19:52.913 -05:00 [FTL] Unhandled exception
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 03:19:53.086 -05:00 [INF] Shut down complete
+2022-03-22 03:26:15.383 -05:00 [FTL] Unhandled exception
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 03:26:15.443 -05:00 [INF] Shut down complete
+2022-03-22 03:32:22.470 -05:00 [FTL] Unhandled exception
+Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException: Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.
+   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 03:32:22.588 -05:00 [INF] Shut down complete
+2022-03-22 06:51:50.186 -05:00 [INF] The application started
+2022-03-22 06:51:50.609 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 06:51:50.985 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 06:51:50.986 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 06:51:50.987 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 06:51:50.988 -05:00 [INF] Hosting environment: Development
+2022-03-22 06:51:50.989 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 06:51:51.990 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 06:51:52.297 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 250.8926 ms
+2022-03-22 06:51:52.312 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 326.3657ms
+2022-03-22 06:51:52.376 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 06:51:52.387 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 11.5175ms
+2022-03-22 06:51:52.993 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 06:51:53.122 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 126.2913 ms
+2022-03-22 06:51:53.123 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 129.9819ms
+2022-03-22 06:54:34.848 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 06:54:34.882 -05:00 [INF] Shut down complete
+2022-03-22 07:08:21.495 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 07:08:21.530 -05:00 [INF] Shut down complete
+2022-03-22 07:08:44.846 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 07:08:44.872 -05:00 [INF] Shut down complete
+2022-03-22 07:10:30.753 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 07:10:30.790 -05:00 [INF] Shut down complete
+2022-03-22 07:10:34.973 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 07:10:35.011 -05:00 [INF] Shut down complete
+2022-03-22 07:13:37.937 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 07:13:37.981 -05:00 [INF] Shut down complete
+2022-03-22 07:13:49.822 -05:00 [ERR] Exception of type 'Microsoft.Extensions.Hosting.HostFactoryResolver+HostingListener+StopTheHostException' was thrown.   at Microsoft.Extensions.Hosting.HostFactoryResolver.HostingListener.OnNext(KeyValuePair`2 value)
+   at System.Diagnostics.DiagnosticListener.Write(String name, Object value)
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Microsoft.AspNetCore.Builder.WebApplicationBuilder.Build()
+   at Program.<Main>$(String[] args) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Program.cs:line 71
+2022-03-22 07:13:49.846 -05:00 [INF] Shut down complete
+2022-03-22 07:18:35.193 -05:00 [INF] Shut down complete
+2022-03-22 07:19:11.142 -05:00 [INF] Shut down complete
+2022-03-22 07:20:00.565 -05:00 [INF] Shut down complete
+2022-03-22 07:23:40.289 -05:00 [INF] Shut down complete
+2022-03-22 07:27:43.545 -05:00 [INF] Shut down complete
+2022-03-22 07:27:55.974 -05:00 [INF] Shut down complete
+2022-03-22 07:32:00.092 -05:00 [INF] Shut down complete
+2022-03-22 07:32:08.672 -05:00 [INF] Shut down complete
+2022-03-22 07:32:16.823 -05:00 [INF] Shut down complete
+2022-03-22 07:39:25.579 -05:00 [INF] Shut down complete
+2022-03-22 07:39:56.787 -05:00 [INF] Shut down complete
+2022-03-22 07:40:04.791 -05:00 [INF] Shut down complete
+2022-03-22 08:03:22.326 -05:00 [INF] Shut down complete
+2022-03-22 08:03:26.370 -05:00 [INF] Shut down complete
+2022-03-22 08:03:39.328 -05:00 [INF] Shut down complete
+2022-03-22 08:03:54.317 -05:00 [INF] Shut down complete

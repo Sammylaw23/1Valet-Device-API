@@ -1,5 +1,4 @@
-﻿using OneValet.DeviceGallery.Domain.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +11,6 @@ namespace OneValet.DeviceGallery.Application.DTOs.Device
         public string? Name { get; set; }
         public double TemperatureC { get; set; }
         public string? IconBase64String { get; set; }
-        public bool Online { get; set; }
+        public bool IsOnline { get; set; }
     }
 }
