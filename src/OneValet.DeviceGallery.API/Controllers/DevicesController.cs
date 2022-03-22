@@ -30,7 +30,7 @@ namespace OneValet.DeviceGallery.API.Controllers
         //}
 
         [HttpGet]
-        public async Task<IActionResult> GetDevices([FromQuery] DevicesResourceParameters devicesResourceParameters)
+        public async Task<IActionResult> GetDevicesAsync([FromQuery] DevicesResourceParameters devicesResourceParameters)
         {
             var devices = await _deviceService.GetAllDevicesAsync(devicesResourceParameters);
             return Ok(devices);
@@ -38,19 +38,19 @@ namespace OneValet.DeviceGallery.API.Controllers
 
         
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDeviceById(int id) =>
+        public async Task<IActionResult> GetDeviceByIdAsync(int id) =>
            Ok(await _deviceService.GetDeviceByIdAsync(id));
 
         [HttpPost]
-        public async Task<IActionResult> AddDevice(DeviceRequest request)
+        public async Task<IActionResult> AddDeviceAsync(DeviceRequest request)
         {
             //return Ok(await _deviceService.AddDeviceAsync(request));
             var response = await _deviceService.AddDeviceAsync(request);
-            return CreatedAtAction(nameof(GetDeviceById), new { id = response.Data }, response);
+            return CreatedAtAction(nameof(GetDeviceByIdAsync), new { id = response.Data }, response);
         }
 
         [HttpPost("bulk")]
-        public async Task<IActionResult> AddMultipleDevices(IEnumerable<DeviceRequest> requests)
+        public async Task<IActionResult> AddMultipleDevicesAsync(IEnumerable<DeviceRequest> requests)
         {
             //return Ok(await _deviceService.AddDeviceAsync(request));
             var response = await _deviceService.AddMultipleDevicesAsync(requests);
@@ -61,21 +61,21 @@ namespace OneValet.DeviceGallery.API.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateDevice(int id, DeviceRequest request)
+        public async Task<IActionResult> UpdateDeviceAsync(int id, DeviceRequest request)
         {
             await _deviceService.UpdateDeviceAsync(id, request);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteDeviceAsync(int id)
         {
             await _deviceService.DeleteDeviceAsync(id);
             return NoContent();
         }
 
         [HttpPut("toggledeviceavailability/{id}")]
-        public async Task<IActionResult> ToggleDeviceAvailability(int id)
+        public async Task<IActionResult> ToggleDeviceAvailabilityAsync(int id)
         {
             await _deviceService.ToggleAvailability(id);
             return NoContent();

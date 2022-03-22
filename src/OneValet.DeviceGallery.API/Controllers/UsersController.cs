@@ -6,7 +6,7 @@ using OneValet.DeviceGallery.Application.Interfaces.Services;
 using OneValet.DeviceGallery.API.Middlewares;
 namespace OneValet.DeviceGallery.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
     [Authorize]
     public class UsersController : ControllerBase

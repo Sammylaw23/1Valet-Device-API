@@ -1,0 +1,19 @@
+2022-03-22 00:10:37.734 -05:00 [INF] The application started
+2022-03-22 00:10:38.070 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 00:10:38.423 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 00:10:38.424 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 00:10:38.425 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 00:10:38.426 -05:00 [INF] Hosting environment: Development
+2022-03-22 00:10:38.427 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 00:10:39.512 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 00:10:39.779 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 202.9698 ms
+2022-03-22 00:10:39.799 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 292.9089ms
+2022-03-22 00:10:39.854 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 00:10:39.863 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 9.0491ms
+2022-03-22 00:10:40.431 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 00:10:40.521 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - -
+2022-03-22 00:10:40.537 -05:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2022-03-22 00:10:40.538 -05:00 [INF] HTTP GET /swagger/favicon-32x32.png responded 200 in 16.4466 ms
+2022-03-22 00:10:40.540 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/favicon-32x32.png - - - 200 628 image/png 19.1554ms
+2022-03-22 00:10:40.568 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 135.4130 ms
+2022-03-22 00:10:40.570 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 138.1179ms
