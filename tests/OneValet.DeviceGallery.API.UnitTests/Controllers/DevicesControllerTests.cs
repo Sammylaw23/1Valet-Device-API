@@ -50,7 +50,7 @@ namespace OneValet.DeviceGallery.API.UnitTests.Controllers
             //Assert
 
             result.GetType().Should().Be(typeof(OkObjectResult));
-            (result as OkObjectResult).StatusCode.Should().Be(200);
+            ((OkObjectResult)result).StatusCode.Should().Be(200);
 
         }
 

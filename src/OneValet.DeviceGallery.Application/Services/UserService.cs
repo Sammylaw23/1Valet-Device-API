@@ -108,7 +108,7 @@ namespace OneValet.DeviceGallery.Application.Services
             return new Response<AuthenticationResponse>(response, $"Successfully authenticated {user.Email}");
         }
 
-        public async Task<AuthenticationResponse> BasicAuthenticateAsync(AuthenticationRequest request)
+        public async Task<AuthenticationResponse?> BasicAuthenticateAsync(AuthenticationRequest request)
         {
             var user = await _repositoryProvider.UserRepository.GetUserByEmailAsync(request.Email);
             if (user == null)
