@@ -1035,3 +1035,323 @@ WHERE @@ROWCOUNT = 1 AND [Id] = scope_identity();
 2022-03-22 10:37:29.149 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.UsersController.CreateUser (OneValet.DeviceGallery.API)'
 2022-03-22 10:37:29.150 -05:00 [INF] HTTP POST /api/users responded 200 in 21528.2749 ms
 2022-03-22 10:37:29.151 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7181/api/users application/json 177 - 200 - application/json;+charset=utf-8 21531.3915ms
+2022-03-22 10:42:14.499 -05:00 [INF] The application started
+2022-03-22 10:42:14.783 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 10:42:15.011 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 10:42:15.012 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 10:42:15.013 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 10:42:15.013 -05:00 [INF] Hosting environment: Development
+2022-03-22 10:42:15.014 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 10:42:15.852 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 10:42:16.073 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 190.6072 ms
+2022-03-22 10:42:16.082 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 232.6839ms
+2022-03-22 10:42:16.123 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 10:42:16.129 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 5.1522ms
+2022-03-22 10:42:16.263 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 10:42:16.365 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 101.7651 ms
+2022-03-22 10:42:16.367 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 104.5636ms
+2022-03-22 10:42:35.260 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 10:42:35.273 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 4.4583 ms
+2022-03-22 10:42:35.274 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 15.0257ms
+2022-03-22 10:42:44.814 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 10:42:44.816 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 2.1013 ms
+2022-03-22 10:42:44.818 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 4.8292ms
+2022-03-22 10:43:56.755 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices?Online=&SearchQuery= - -
+2022-03-22 10:44:04.779 -05:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization Header
+2022-03-22 10:44:04.789 -05:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-03-22 10:44:08.536 -05:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2022-03-22 10:44:08.538 -05:00 [INF] HTTP GET /api/devices responded 401 in 11782.6115 ms
+2022-03-22 10:44:08.549 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices?Online=&SearchQuery= - - - 401 0 - 11794.1503ms
+2022-03-22 10:44:40.200 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices?Online=&SearchQuery= - -
+2022-03-22 10:44:43.126 -05:00 [INF] Entity Framework Core 6.0.3 initialized 'DeviceDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: MigrationsAssembly=OneValet.DeviceGallery.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2022-03-22 10:44:44.117 -05:00 [INF] Executed DbCommand (65ms) [Parameters=[@__email_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Email] = @__email_0
+2022-03-22 10:44:44.213 -05:00 [INF] Executed DbCommand (4ms) [Parameters=[@__user_Password_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Password] = @__user_Password_0
+2022-03-22 10:44:44.229 -05:00 [INF] Executing endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:44:44.251 -05:00 [INF] Route matched with {action = "GetDevices", controller = "Devices"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDevicesAsync(OneValet.DeviceGallery.Application.ResourceParameters.DevicesResourceParameters) on controller OneValet.DeviceGallery.API.Controllers.DevicesController (OneValet.DeviceGallery.API).
+2022-03-22 10:44:44.281 -05:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2022-03-22 10:44:44.291 -05:00 [INF] Executed action OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API) in 33.2537ms
+2022-03-22 10:44:44.292 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:44:44.293 -05:00 [INF] HTTP GET /api/devices responded 400 in 4091.9968 ms
+2022-03-22 10:44:44.298 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices?Online=&SearchQuery= - - - 400 - application/problem+json;+charset=utf-8 4097.4166ms
+2022-03-22 10:45:00.047 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices?Online=%20&SearchQuery=%20 - -
+2022-03-22 10:45:01.765 -05:00 [INF] Entity Framework Core 6.0.3 initialized 'DeviceDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: MigrationsAssembly=OneValet.DeviceGallery.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2022-03-22 10:45:01.771 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Email] = @__email_0
+2022-03-22 10:45:01.775 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Password_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Password] = @__user_Password_0
+2022-03-22 10:45:01.776 -05:00 [INF] Executing endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:45:01.777 -05:00 [INF] Route matched with {action = "GetDevices", controller = "Devices"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDevicesAsync(OneValet.DeviceGallery.Application.ResourceParameters.DevicesResourceParameters) on controller OneValet.DeviceGallery.API.Controllers.DevicesController (OneValet.DeviceGallery.API).
+2022-03-22 10:45:01.781 -05:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2022-03-22 10:45:01.782 -05:00 [INF] Executed action OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API) in 2.1039ms
+2022-03-22 10:45:01.783 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:45:01.783 -05:00 [INF] HTTP GET /api/devices responded 400 in 1734.3086 ms
+2022-03-22 10:45:01.784 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices?Online=%20&SearchQuery=%20 - - - 400 - application/problem+json;+charset=utf-8 1736.7922ms
+2022-03-22 10:45:15.004 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices?Online=%22%22&SearchQuery=%22%22 - -
+2022-03-22 10:45:16.918 -05:00 [INF] Entity Framework Core 6.0.3 initialized 'DeviceDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: MigrationsAssembly=OneValet.DeviceGallery.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2022-03-22 10:45:16.924 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Email] = @__email_0
+2022-03-22 10:45:16.927 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Password_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Password] = @__user_Password_0
+2022-03-22 10:45:16.930 -05:00 [INF] Executing endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:45:16.931 -05:00 [INF] Route matched with {action = "GetDevices", controller = "Devices"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDevicesAsync(OneValet.DeviceGallery.Application.ResourceParameters.DevicesResourceParameters) on controller OneValet.DeviceGallery.API.Controllers.DevicesController (OneValet.DeviceGallery.API).
+2022-03-22 10:45:20.278 -05:00 [INF] Executed action OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API) in 3346.6775ms
+2022-03-22 10:45:20.281 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:45:20.309 -05:00 [ERR] An exception was thrown while attempting to evaluate a LINQ query parameter expression. See the inner exception for more information. To show additional information call 'DbContextOptionsBuilder.EnableSensitiveDataLogging'.
+System.InvalidOperationException: An exception was thrown while attempting to evaluate a LINQ query parameter expression. See the inner exception for more information. To show additional information call 'DbContextOptionsBuilder.EnableSensitiveDataLogging'.
+ ---> System.FormatException: String '""' was not recognized as a valid Boolean.
+   at System.Boolean.Parse(ReadOnlySpan`1 value)
+   at System.Boolean.Parse(String value)
+   at lambda_method80(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.GetValue(Expression expression, String& parameterName)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.GetValue(Expression expression, String& parameterName)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Evaluate(Expression expression, Boolean generateParameter)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Linq.Expressions.ExpressionVisitor.VisitBinary(BinaryExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Linq.Expressions.ExpressionVisitor.VisitLambda[T](Expression`1 node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Linq.Expressions.ExpressionVisitor.VisitUnary(UnaryExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Dynamic.Utils.ExpressionVisitorUtils.VisitArguments(ExpressionVisitor visitor, IArgumentProvider nodes)
+   at System.Linq.Expressions.ExpressionVisitor.VisitMethodCall(MethodCallExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Dynamic.Utils.ExpressionVisitorUtils.VisitArguments(ExpressionVisitor visitor, IArgumentProvider nodes)
+   at System.Linq.Expressions.ExpressionVisitor.VisitMethodCall(MethodCallExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.ExtractParameters(Expression expression, Boolean clearEvaluatedValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.ExtractParameters(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExtractParameters(Expression query, IParameterValues parameterValues, IDiagnosticsLogger`1 logger, Boolean parameterize, Boolean generateContextAccessors)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at OneValet.DeviceGallery.Infrastructure.Persistence.Repositories.DeviceRepository.GetAllDeviceAsync(DevicesResourceParameters devicesResourceParameters) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.Infrastructure\Persistence\Repositories\DeviceRepository.cs:line 67
+   at OneValet.DeviceGallery.Application.Services.DeviceService.GetAllDevicesAsync(DevicesResourceParameters devicesResourceParameters) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.Application\Services\DeviceService.cs:line 44
+   at OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync(DevicesResourceParameters devicesResourceParameters) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Controllers\DevicesController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at OneValet.DeviceGallery.API.Middlewares.ApiErrorHandler.Invoke(HttpContext context) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Middlewares\ApiErrorHandler.cs:line 27
+2022-03-22 10:45:20.727 -05:00 [ERR] HTTP GET /api/devices responded 500 in 5721.4649 ms
+2022-03-22 10:45:20.728 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices?Online=%22%22&SearchQuery=%22%22 - - - 500 - application/json;+charset=utf-8 5724.1691ms
+2022-03-22 10:45:28.489 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices?Online=%22%22&SearchQuery=%22%22 - -
+2022-03-22 10:45:30.110 -05:00 [INF] Entity Framework Core 6.0.3 initialized 'DeviceDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: MigrationsAssembly=OneValet.DeviceGallery.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2022-03-22 10:45:30.114 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Email] = @__email_0
+2022-03-22 10:45:30.119 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__user_Password_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Password] = @__user_Password_0
+2022-03-22 10:45:30.122 -05:00 [INF] Executing endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:45:30.123 -05:00 [INF] Route matched with {action = "GetDevices", controller = "Devices"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDevicesAsync(OneValet.DeviceGallery.Application.ResourceParameters.DevicesResourceParameters) on controller OneValet.DeviceGallery.API.Controllers.DevicesController (OneValet.DeviceGallery.API).
+2022-03-22 10:46:24.780 -05:00 [INF] Executed action OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API) in 54655.6187ms
+2022-03-22 10:46:24.783 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:46:34.131 -05:00 [ERR] An exception was thrown while attempting to evaluate a LINQ query parameter expression. See the inner exception for more information. To show additional information call 'DbContextOptionsBuilder.EnableSensitiveDataLogging'.
+System.InvalidOperationException: An exception was thrown while attempting to evaluate a LINQ query parameter expression. See the inner exception for more information. To show additional information call 'DbContextOptionsBuilder.EnableSensitiveDataLogging'.
+ ---> System.FormatException: String '""' was not recognized as a valid Boolean.
+   at System.Boolean.Parse(ReadOnlySpan`1 value)
+   at System.Boolean.Parse(String value)
+   at lambda_method81(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.GetValue(Expression expression, String& parameterName)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.GetValue(Expression expression, String& parameterName)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Evaluate(Expression expression, Boolean generateParameter)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Linq.Expressions.ExpressionVisitor.VisitBinary(BinaryExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.VisitBinary(BinaryExpression binaryExpression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Linq.Expressions.ExpressionVisitor.VisitLambda[T](Expression`1 node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Linq.Expressions.ExpressionVisitor.VisitUnary(UnaryExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Dynamic.Utils.ExpressionVisitorUtils.VisitArguments(ExpressionVisitor visitor, IArgumentProvider nodes)
+   at System.Linq.Expressions.ExpressionVisitor.VisitMethodCall(MethodCallExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at System.Dynamic.Utils.ExpressionVisitorUtils.VisitArguments(ExpressionVisitor visitor, IArgumentProvider nodes)
+   at System.Linq.Expressions.ExpressionVisitor.VisitMethodCall(MethodCallExpression node)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.Visit(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.ExtractParameters(Expression expression, Boolean clearEvaluatedValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.ParameterExtractingExpressionVisitor.ExtractParameters(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExtractParameters(Expression query, IParameterValues parameterValues, IDiagnosticsLogger`1 logger, Boolean parameterize, Boolean generateContextAccessors)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at OneValet.DeviceGallery.Infrastructure.Persistence.Repositories.DeviceRepository.GetAllDeviceAsync(DevicesResourceParameters devicesResourceParameters) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.Infrastructure\Persistence\Repositories\DeviceRepository.cs:line 67
+   at OneValet.DeviceGallery.Application.Services.DeviceService.GetAllDevicesAsync(DevicesResourceParameters devicesResourceParameters) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.Application\Services\DeviceService.cs:line 44
+   at OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync(DevicesResourceParameters devicesResourceParameters) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Controllers\DevicesController.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at OneValet.DeviceGallery.API.Middlewares.ApiErrorHandler.Invoke(HttpContext context) in C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\Middlewares\ApiErrorHandler.cs:line 27
+2022-03-22 10:48:03.624 -05:00 [ERR] HTTP GET /api/devices responded 500 in 155133.3143 ms
+2022-03-22 10:48:03.635 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices?Online=%22%22&SearchQuery=%22%22 - - - 500 - application/json;+charset=utf-8 155145.9428ms
+2022-03-22 10:48:21.443 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices - -
+2022-03-22 10:48:27.821 -05:00 [INF] Entity Framework Core 6.0.3 initialized 'DeviceDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: MigrationsAssembly=OneValet.DeviceGallery.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2022-03-22 10:48:27.824 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__email_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Email] = @__email_0
+2022-03-22 10:48:27.864 -05:00 [INF] Executed DbCommand (38ms) [Parameters=[@__user_Password_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Password] = @__user_Password_0
+2022-03-22 10:48:27.871 -05:00 [INF] Executing endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:48:27.873 -05:00 [INF] Route matched with {action = "GetDevices", controller = "Devices"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDevicesAsync(OneValet.DeviceGallery.Application.ResourceParameters.DevicesResourceParameters) on controller OneValet.DeviceGallery.API.Controllers.DevicesController (OneValet.DeviceGallery.API).
+2022-03-22 10:48:30.671 -05:00 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[DeviceTypeId], [d].[IconBase64String], [d].[IsOnline], [d].[Name], [d].[TemperatureC]
+FROM [Devices] AS [d]
+ORDER BY [d].[Id]
+2022-03-22 10:48:30.713 -05:00 [INF] Executing OkObjectResult, writing value of type 'OneValet.DeviceGallery.Application.Wrappers.Response`1[[System.Collections.Generic.IEnumerable`1[[OneValet.DeviceGallery.Application.DTOs.Device.DeviceResponse, OneValet.DeviceGallery.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-03-22 10:48:30.719 -05:00 [INF] Executed action OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API) in 2842.8376ms
+2022-03-22 10:48:30.721 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:48:30.723 -05:00 [INF] HTTP GET /api/devices responded 200 in 9278.8322 ms
+2022-03-22 10:48:30.725 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices - - - 200 - application/json;+charset=utf-8 9281.9286ms
+2022-03-22 10:48:51.426 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7181/api/devices?Online=true - -
+2022-03-22 10:48:52.857 -05:00 [INF] Entity Framework Core 6.0.3 initialized 'DeviceDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.3' with options: MigrationsAssembly=OneValet.DeviceGallery.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null 
+2022-03-22 10:48:52.861 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__email_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Email] = @__email_0
+2022-03-22 10:48:52.864 -05:00 [INF] Executed DbCommand (1ms) [Parameters=[@__user_Password_0='?' (Size = 55)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [d].[Id], [d].[Email], [d].[EmailConfirmed], [d].[FirstName], [d].[LastName], [d].[Password], [d].[UserName]
+FROM [DeviceUsers] AS [d]
+WHERE [d].[Password] = @__user_Password_0
+2022-03-22 10:48:52.865 -05:00 [INF] Executing endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:48:52.866 -05:00 [INF] Route matched with {action = "GetDevices", controller = "Devices"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetDevicesAsync(OneValet.DeviceGallery.Application.ResourceParameters.DevicesResourceParameters) on controller OneValet.DeviceGallery.API.Controllers.DevicesController (OneValet.DeviceGallery.API).
+2022-03-22 10:48:54.629 -05:00 [INF] Executed DbCommand (2ms) [Parameters=[@__Parse_0='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SELECT [d].[Id], [d].[DeviceTypeId], [d].[IconBase64String], [d].[IsOnline], [d].[Name], [d].[TemperatureC]
+FROM [Devices] AS [d]
+WHERE [d].[IsOnline] = @__Parse_0
+2022-03-22 10:48:54.632 -05:00 [INF] Executing OkObjectResult, writing value of type 'OneValet.DeviceGallery.Application.Wrappers.Response`1[[System.Collections.Generic.IEnumerable`1[[OneValet.DeviceGallery.Application.DTOs.Device.DeviceResponse, OneValet.DeviceGallery.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-03-22 10:48:54.633 -05:00 [INF] Executed action OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API) in 1766.3271ms
+2022-03-22 10:48:54.634 -05:00 [INF] Executed endpoint 'OneValet.DeviceGallery.API.Controllers.DevicesController.GetDevicesAsync (OneValet.DeviceGallery.API)'
+2022-03-22 10:48:54.635 -05:00 [INF] HTTP GET /api/devices responded 200 in 3207.6250 ms
+2022-03-22 10:48:54.636 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7181/api/devices?Online=true - - - 200 - application/json;+charset=utf-8 3209.6103ms
+2022-03-22 11:00:12.742 -05:00 [INF] The application started
+2022-03-22 11:00:13.003 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 11:00:13.408 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 11:00:13.409 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 11:00:13.410 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 11:00:13.410 -05:00 [INF] Hosting environment: Development
+2022-03-22 11:00:13.411 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 11:00:14.269 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 11:00:14.586 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 277.3339 ms
+2022-03-22 11:00:14.599 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 334.4295ms
+2022-03-22 11:00:14.641 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 11:00:14.654 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 12.5514ms
+2022-03-22 11:00:15.074 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 11:00:15.220 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 141.6842 ms
+2022-03-22 11:00:15.221 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 146.8892ms
+2022-03-22 11:06:44.576 -05:00 [INF] The application started
+2022-03-22 11:06:44.849 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 11:06:45.096 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 11:06:45.105 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 11:06:45.105 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 11:06:45.106 -05:00 [INF] Hosting environment: Development
+2022-03-22 11:06:45.107 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 11:06:46.033 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 11:06:46.294 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 209.0277 ms
+2022-03-22 11:06:46.302 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 11:06:46.321 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 296.6208ms
+2022-03-22 11:06:46.340 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 38.1690ms
+2022-03-22 11:06:46.509 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 11:06:46.602 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 90.7871 ms
+2022-03-22 11:06:46.603 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 93.9603ms
+2022-03-22 11:10:11.700 -05:00 [INF] The application started
+2022-03-22 11:10:12.266 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 11:10:12.545 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 11:10:12.546 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 11:10:12.547 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 11:10:12.547 -05:00 [INF] Hosting environment: Development
+2022-03-22 11:10:12.548 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 11:10:13.234 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 11:10:13.574 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 284.4066 ms
+2022-03-22 11:10:13.582 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 352.2128ms
+2022-03-22 11:10:13.627 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 11:10:13.637 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 9.6970ms
+2022-03-22 11:10:13.847 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 11:10:13.967 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 119.1750 ms
+2022-03-22 11:10:13.970 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 122.8478ms
+2022-03-22 11:13:25.946 -05:00 [INF] The application started
+2022-03-22 11:13:26.132 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 11:13:26.354 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 11:13:26.355 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 11:13:26.356 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 11:13:26.356 -05:00 [INF] Hosting environment: Development
+2022-03-22 11:13:26.357 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 11:13:27.357 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 11:13:27.773 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 356.7612 ms
+2022-03-22 11:13:27.794 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 443.7208ms
+2022-03-22 11:13:27.857 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 11:13:27.900 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 42.7046ms
+2022-03-22 11:13:28.518 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 11:13:28.687 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 168.2420 ms
+2022-03-22 11:13:28.695 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 177.5230ms
+2022-03-22 11:14:19.596 -05:00 [INF] The application started
+2022-03-22 11:14:19.977 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 11:14:20.367 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 11:14:20.375 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 11:14:20.376 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 11:14:20.376 -05:00 [INF] Hosting environment: Development
+2022-03-22 11:14:20.377 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 11:14:21.127 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 11:14:21.410 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 241.0496 ms
+2022-03-22 11:14:21.435 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 11:14:21.490 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 367.8910ms
+2022-03-22 11:14:21.490 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 54.1961ms
+2022-03-22 11:14:21.763 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 11:14:21.989 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 224.9671 ms
+2022-03-22 11:14:21.994 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 231.3660ms
+2022-03-22 11:16:23.487 -05:00 [INF] The application started
+2022-03-22 11:16:23.864 -05:00 [INF] User profile is available. Using 'C:\Users\salawal\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-03-22 11:16:24.080 -05:00 [INF] Now listening on: https://localhost:7181
+2022-03-22 11:16:24.089 -05:00 [INF] Now listening on: http://localhost:5181
+2022-03-22 11:16:24.090 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-03-22 11:16:24.091 -05:00 [INF] Hosting environment: Development
+2022-03-22 11:16:24.092 -05:00 [INF] Content root path: C:\Users\salawal\Desktop\SAMUEL\DEVELOPER\onevalet.devicegallery-api\src\OneValet.DeviceGallery.API\
+2022-03-22 11:16:25.458 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/index.html - -
+2022-03-22 11:16:25.839 -05:00 [INF] HTTP GET /swagger/index.html responded 200 in 326.9810 ms
+2022-03-22 11:16:25.852 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/index.html - - - 200 - text/html;charset=utf-8 402.0181ms
+2022-03-22 11:16:25.922 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - -
+2022-03-22 11:16:25.938 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/_framework/aspnetcore-browser-refresh.js - - - 200 12010 application/javascript;+charset=utf-8 15.9382ms
+2022-03-22 11:16:26.290 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - -
+2022-03-22 11:16:26.512 -05:00 [INF] HTTP GET /swagger/v1/swagger.json responded 200 in 221.2595 ms
+2022-03-22 11:16:26.516 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7181/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 226.9928ms

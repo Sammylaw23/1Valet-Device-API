@@ -29,4 +29,8 @@
     <ProjectReference Include="..\OneValet.DeviceGallery.Infrastructure\OneValet.DeviceGallery.Infrastructure.csproj" />
   </ItemGroup>
 
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
 </Project>

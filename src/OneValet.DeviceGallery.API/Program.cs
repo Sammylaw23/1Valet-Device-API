@@ -4,6 +4,7 @@ using OneValet.DeviceGallery.API.Middlewares;
 using OneValet.DeviceGallery.Application;
 using OneValet.DeviceGallery.Infrastructure;
 using Serilog;
+using System.Reflection;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -23,7 +24,12 @@ try
     builder.Services.AddCors(options => options.AddDefaultPolicy(builder => builder.WithOrigins(configuration["AllowedUrl"]).AllowAnyHeader().AllowAnyMethod()));
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    builder.Services.AddSwaggerGen(c =>
+    {
+        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory,xmlFile);
+        c.IncludeXmlComments(xmlPath);
+    });
     builder.Services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
 

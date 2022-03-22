@@ -1,4 +1,3 @@
-using AutoMapper;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -10,9 +9,6 @@ using OneValet.DeviceGallery.Application.Interfaces.Services;
 using OneValet.DeviceGallery.Application.ResourceParameters;
 using OneValet.DeviceGallery.Application.Services;
 using OneValet.DeviceGallery.Application.Wrappers;
-using OneValet.DeviceGallery.Infrastructure.Persistence;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -87,17 +83,14 @@ namespace OneValet.DeviceGallery.API.UnitTests.Controllers
             //Arrange
             var newDevice = DeviceMockData.AddDevice();
             var newDeviceResponse = DeviceMockData.GetDevices().Data.FirstOrDefault();
-
-            //var sut = new DevicesController(deviceService.Object);
             _service.Setup(x => x.AddDeviceAsync(newDevice)).Returns(Task.FromResult(new Response<DeviceResponse>(newDeviceResponse)));
 
             //Act
             var result = await _controller.AddDeviceAsync(newDevice);
 
             //Assert
-            Assert.IsType<CreatedAtActionResult>(result);
+            Assert.IsType<OkObjectResult>(result);
             _service.Verify(_ => _.AddDeviceAsync(newDevice), Times.Once());
-
         }
 
         [Fact]
