@@ -38,16 +38,6 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             var dbUser = await _dbContext.DeviceUsers.FirstOrDefaultAsync(x=>x.Password == user.Password);
             //var dbUser = await _dbContext.DeviceUsers.FirstOrDefaultAsync(x=> x.Email == user.Email && x.Password == user.Password);
             return (dbUser != null && dbUser.Password == user.Password) ? true : false;
-
-            //return UserLists.Any(user =>
-            //   user.UserName.Equals(username, StringComparison.OrdinalIgnoreCase)
-            //   && user.Password == password);
-
-
-
-            //var exist = await _dbContext.DeviceUsers.AnyAsync(x=> x.Email == user.Email && x.Password == user.Password);
-            //var exist = await _dbContext.DeviceUsers.AnyAsync(x=> x.Email == user.Email || x.UserName == user.UserName);
-            //return exist;
         }
     }
 }

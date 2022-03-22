@@ -46,10 +46,7 @@ namespace OneValet.DeviceGallery.API.Middlewares
                     Email = credentials[0],
                     Password = credentials[1]
                 };
-
-
                var user = await _userService.BasicAuthenticateAsync(request);
-                //if (credentials[0] == "admin" && credentials[1] == "admin")
                 if (user != null)
                 {
                     var claims = new[] { new Claim("name", credentials[0]), new Claim(ClaimTypes.Role, "Admin") };
@@ -57,13 +54,6 @@ namespace OneValet.DeviceGallery.API.Middlewares
                     var claimsPrincipal = new ClaimsPrincipal(identity);
                     var ticket = new AuthenticationTicket(claimsPrincipal, Scheme.Name);
                     return AuthenticateResult.Success(ticket);
-
-                    //Alternative...................
-            //        var claims = new[] {
-            //    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            //    new Claim(ClaimTypes.Name, user.Username),
-            //};
-            //        var identity = new ClaimsIdentity(claims, Scheme.Name);
                 }
 
                 Response.StatusCode = 401;
@@ -74,7 +64,6 @@ namespace OneValet.DeviceGallery.API.Middlewares
             {
                 string realm = "onevaletdevices";
                 Response.StatusCode = 401;
-                //Response.Headers.Add("WWW-Authenticate", "Basic realm=\"onevaletdevices.com\"");
                 Response.Headers.Add("WWW-Authenticate", string.Format("Basic realm=\"{0}\"", realm));
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }

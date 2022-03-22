@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OneValet.DeviceGallery.Application.Interfaces.Repositories
 {
-    public  interface IUserRepository
+    public interface IUserRepository
     {
         Task CreateUserAsync(DeviceUser user);
         Task<DeviceUser> GetUserByIdAsync(int id);
@@ -17,7 +17,6 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Repositories
         Task<IEnumerable<DeviceUser>> GetAllUsersAsync();
         void UpdateUser(DeviceUser user);
         void DeleteUser(DeviceUser user);
-
         Task<bool> UserCredentialExist(AuthenticationRequest request);
     }
 }

@@ -10,16 +10,12 @@ using System.Threading.Tasks;
 
 namespace OneValet.DeviceGallery.Application.Common.Mappings
 {
-    public class DeviceProfile: Profile
+    public class DeviceProfile : Profile
     {
         public DeviceProfile()
         {
             CreateMap<Device, DeviceResponse>();
             CreateMap<DeviceRequest, Device>();
-            //CreateMap<Device, DeviceResponse>();
-            //CreateMap<PagedList<Device>, PagedList<DeviceResponse>>();
-
-
         }
     }
 }

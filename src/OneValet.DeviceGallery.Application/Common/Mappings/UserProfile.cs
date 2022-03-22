@@ -15,9 +15,7 @@ namespace OneValet.DeviceGallery.Application.Common.Mappings
         {
             CreateMap<UserRequest, DeviceUser>();
             CreateMap<DeviceUser, UserResponse>();
-
             CreateMap<DeviceUser, AuthenticationResponse>();
-
         }
     }
 }

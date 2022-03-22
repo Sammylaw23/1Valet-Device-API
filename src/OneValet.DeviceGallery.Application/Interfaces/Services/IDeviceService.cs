@@ -10,28 +10,15 @@ using System.Threading.Tasks;
 
 namespace OneValet.DeviceGallery.Application.Interfaces.Services
 {
-   public interface IDeviceService
+    public interface IDeviceService
     {
-
         Task<Response<DeviceResponse>> AddDeviceAsync(DeviceRequest deviceRequest);
         Task<Response<IEnumerable<DeviceResponse>>> AddMultipleDevicesAsync(IEnumerable<DeviceRequest> deviceRequests);
-
-        
         Task UpdateDeviceAsync(int id, DeviceRequest deviceRequest);
         Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id);
-
         Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync(DevicesResourceParameters devicesResourceParameters);
-        //Task<Response<PagedList<DeviceResponse>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
-       
-
-        //Task<Response<PagedList<IEnumerable<DeviceResponse>>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
-
-
-        //Task<Response<IEnumerable<DeviceResponse>>> GetAllDevicesAsync(DeviceParameters deviceParameters);
-
         Task ToggleAvailability(int id);
-
         Task DeleteDeviceAsync(int id);
-        
+
     }
 }

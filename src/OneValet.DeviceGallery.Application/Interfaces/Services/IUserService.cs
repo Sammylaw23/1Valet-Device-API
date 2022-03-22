@@ -15,7 +15,6 @@ namespace OneValet.DeviceGallery.Application.Interfaces.Services
         Task<Response<UserResponse>> GetUserByIdAsync(int id);
         Task<Response<IEnumerable<UserResponse>>> GetAllUsersAsync();
         Task DeleteUserAsync(int id);
-
         Task<Response<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request);
         Task<AuthenticationResponse> BasicAuthenticateAsync(AuthenticationRequest request);
     }

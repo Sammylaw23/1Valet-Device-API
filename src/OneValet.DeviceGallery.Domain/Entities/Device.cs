@@ -16,7 +16,6 @@ namespace OneValet.DeviceGallery.Domain.Entities
         public bool IsOnline { get; set; }
         public int DeviceTypeId { get; set; } //FK
         //public DeviceType DeviceType { get; set; }
-
         //public string Usage { get; set; }
         //public List<Device> RelatedDevices { get; set; } list of Ids
 

@@ -11,9 +11,6 @@ namespace OneValet.DeviceGallery.Application.Interfaces
     {
         public IDeviceRepository DeviceRepository { get; }
         public IUserRepository UserRepository { get; }
-
-        
-
         Task SaveChangesAsync();
     }
 }

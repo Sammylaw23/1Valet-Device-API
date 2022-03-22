@@ -31,65 +31,6 @@ namespace OneValet.DeviceGallery.API.UnitTests.Services
             _dbContext.Database.EnsureCreated();
             _repository = new RepositoryProvider(_dbContext);
         }
-
-        //[Fact]
-        //public async Task GetAllDevicesAsync_ReturnsDeviceCollection()
-        //{
-        //    ///Arrange
-        //    var devicesResourceParameters = new DevicesResourceParameters()
-        //    {
-        //        IsOnline = "",
-        //        SearchQuery = ""
-        //    };
-
-        //    _dbContext.Devices.AddRange(DeviceMockData.GetDevicesEntity());
-        //    _dbContext.SaveChanges();
-
-
-        //    Mock<IRepositoryProvider> mockRepo = new Mock<IRepositoryProvider>();
-
-        //    var devices = new List<Device>
-        //    {
-        //          new Device {
-        //            Id = 11,
-        //            Name = "Nokia 7 Plus",
-        //            TemperatureC =  49,
-        //            IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-        //            IsOnline = true
-        //          },
-        //          new Device {
-        //              Id=12,
-        //            Name = "iPad 11",
-        //            TemperatureC =  67,
-        //            IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-        //            IsOnline = false
-        //          },
-        //          new Device {
-        //              Id=13,
-        //            Name = "HP Elitebook",
-        //            TemperatureC =  72,
-        //            IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-        //            IsOnline = false
-        //          }
-        //    };
-
-        //    mockRepo.Setup(m => m.DeviceRepository.GetAllDeviceAsync(devicesResourceParameters)).Returns(Task.FromResult(devices.AsEnumerable()));
-        //    //mockRepo.Setup(m => m.DeviceRepository.GetAllDeviceAsync()).Returns(Task.FromResult(DeviceMockData.GetDevicesEntity().AsEnumerable()));
-
-        //    var mockMapper = new Mock<IMapper>();
-
-        //    var sut = new DeviceService(mockRepo.Object, mockMapper.Object);
-
-        //    ///Act
-        //    var result = await sut.GetAllDevicesAsync(devicesResourceParameters);
-
-        //    //Assert
-        //    //result.Data.Should().HaveCount(x=>x >= 0);
-        //    result.Data.Should().HaveCount(DeviceMockData.GetDevicesEntity().Count);
-        //}
-
-
-
         public void Dispose()
         {
             _dbContext.Database.EnsureDeleted();

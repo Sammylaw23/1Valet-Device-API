@@ -21,7 +21,7 @@ namespace OneValet.DeviceGallery.API.UnitTests.MockData
                     Id = 9,
                     Name = "Nokia 3310",
                     IconBase64String = "dfergfr",
-                    Online = true,
+                    IsOnline = true,
                     TemperatureC = 15.3
                 },
                  new DeviceResponse()
@@ -29,20 +29,12 @@ namespace OneValet.DeviceGallery.API.UnitTests.MockData
                     Id = 10,
                     Name = "Nokia 3310",
                     IconBase64String = "dfergfr",
-                    Online = true,
+                    IsOnline = true,
                     TemperatureC = 15.3
                 }
-
-
             };
 
             return new Response<IEnumerable<DeviceResponse>>(response.AsEnumerable());
-
-
-
-
-
-
         }
 
 
@@ -72,42 +64,6 @@ namespace OneValet.DeviceGallery.API.UnitTests.MockData
                     IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
                     IsOnline = false
                   }
-                  //,
-                  //new Device {
-                  //    Id=4,
-                  //  Name = "Samsung Tablet",
-                  //  TemperatureC =  31,
-                  //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  IsOnline = false
-                  //},
-                  //new Device {
-                  //    Id=5,
-                  //  Name = "DELL 205",
-                  //  TemperatureC =  55,
-                  //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  IsOnline = false
-                  //},
-                  //new Device {
-                  //    Id=6,
-                  //  Name = "Tecno Spark 6",
-                  //  TemperatureC =  84,
-                  //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  IsOnline = false
-                  //},
-                  //new Device {
-                  //    Id=7,
-                  //  Name = "iPhone 13 Pro Max",
-                  //  TemperatureC =  50,
-                  //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  IsOnline = true
-                  //},
-                  //new Device {
-                  //    Id = 8,
-                  //  Name = "Nokia 3310",
-                  //  TemperatureC =  37,
-                  //  IconBase64String = "FLKLihJHggJJKklKOhjGJkjKLkLJKjhjHHkhhjgJKJLklkh",
-                  //  IsOnline = false
-                  //}
             };
         }
 

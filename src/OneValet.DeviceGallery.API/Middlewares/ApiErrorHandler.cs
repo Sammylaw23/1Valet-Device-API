@@ -12,12 +12,12 @@ namespace OneValet.DeviceGallery.API.Middlewares
     public class ApiErrorHandler
     {
         private readonly RequestDelegate _next;
-        //private ILogger<ApiErrorHandler> _logger;
+        private ILogger<ApiErrorHandler> _logger;
 
-        public ApiErrorHandler(RequestDelegate next/*, ILoggerFactory loggerFactory*/)
+        public ApiErrorHandler(RequestDelegate next, ILoggerFactory loggerFactory)
         {
             _next = next;
-            //_logger = loggerFactory.CreateLogger<ApiErrorHandler>();
+            _logger = loggerFactory.CreateLogger<ApiErrorHandler>();
         }
 
         public async Task Invoke(HttpContext context)
@@ -28,7 +28,7 @@ namespace OneValet.DeviceGallery.API.Middlewares
             }
             catch (Exception error)
             {
-                //_logger.LogError(error, error.Message);
+                _logger.LogError(error, error.Message);
                 var response = context.Response;
                 response.ContentType = "application/json";
                 var responseModel = new Response<string>()
@@ -40,18 +40,10 @@ namespace OneValet.DeviceGallery.API.Middlewares
 
                 switch (error)
                 {
-                    //case InvalidEmailAddressException e:
-                    //    responseModel.Messages.Add(e.Message);
-                    //    response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    //    break;
                     case ApiException e:
                         responseModel.Messages.Add(e.Message);
                         response.StatusCode = e.StatusCode ?? (int)HttpStatusCode.BadRequest;
                         break;
-                    //case ValidationException e:
-                    //    response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    //    responseModel.Messages.AddRange(e.Errors);
-                    //    break;
                     case NotFoundException e:
                         responseModel.Messages.Add(e.Message);
                         response.StatusCode = (int)HttpStatusCode.NotFound;

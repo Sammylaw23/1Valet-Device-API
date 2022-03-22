@@ -15,10 +15,10 @@ using OneValet.DeviceGallery.Application.ResourceParameters;
 
 namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
 {
-    public class DeviceRepository : RepositoryBase<Domain.Entities.Device>, IDeviceRepository
+    public class DeviceRepository : RepositoryBase<Device>, IDeviceRepository
     {
         public DeviceRepository(IApplicationDbContext dbContext) : base(dbContext) { }
-        public async Task CreateDeviceAsync(Domain.Entities.Device device)
+        public async Task CreateDeviceAsync(Device device)
         {
             await AddAsync(device);
         }
@@ -31,15 +31,14 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             return devices;
         }
 
-        public async Task<PagedList<Domain.Entities.Device>> GetAllDeviceAsync(DeviceParameters deviceParameters)
+        public async Task<PagedList<Device>> GetAllDeviceAsync(DeviceParameters deviceParameters)
         {
             var devices = await Get()
                .OrderBy(x => x.Id)
                .ToListAsync();
 
-            var res = PagedList<Domain.Entities.Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
+            var res = PagedList<Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
             return res;
-            //await Get(includeProperties: "Currency").ToListAsync();
         }
 
         public async Task<IEnumerable<Device>> GetAllDeviceAsync(DevicesResourceParameters devicesResourceParameters)
@@ -68,39 +67,14 @@ namespace OneValet.DeviceGallery.Infrastructure.Persistence.Repositories
             return await collection.ToListAsync();
         }
 
-        //public async Task<PagedList<Domain.Entities.Device>> GetAllDeviceAsync(DeviceParameters deviceParameters)
-        //{
-        //     var devices = await Get()
-        //        .OrderBy(x => x.Id)                
-        //        .ToListAsync();
-
-        //    return PagedList<Domain.Entities.Device>.ToPagedList(devices, deviceParameters.PageNumber, deviceParameters.PageSize);
-
-        //    //await Get(includeProperties: "Currency").ToListAsync();
-        //}
-
-
-
-
-
-
-
-        //public async Task<Domain.Entities.Device> GetDeviceByDeviceNoAsync(int deviceId) =>
-        //    await _dbContext.Devices
-        //    .Where(a => a.Id == deviceId)
-        //    .AsNoTracking()
-        //    //.Include(a => a.)
-        //    .FirstOrDefaultAsync();
-
-
-        public async Task<Domain.Entities.Device> GetDeviceByIdAsync(int id) =>
+       
+        public async Task<Device> GetDeviceByIdAsync(int id) =>
             await _dbContext.Devices.Where(a => a.Id == id)
             .AsNoTracking()
-            //.Include(a => a.)
             .FirstOrDefaultAsync();
 
 
-        public void UpdateDevice(Domain.Entities.Device device) => Update(device);
+        public void UpdateDevice(Device device) => Update(device);
 
 
         public void DeleteDevice(Device device) => Delete(device);

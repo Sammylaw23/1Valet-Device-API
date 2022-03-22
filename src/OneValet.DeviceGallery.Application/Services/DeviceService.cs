@@ -39,9 +39,6 @@ namespace OneValet.DeviceGallery.Application.Services
             var devices = await _repositoryProvider.DeviceRepository.GetAllDeviceAsync(devicesResourceParameters);
             return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
         }
-
-
-
         public async Task<Response<DeviceResponse>> GetDeviceByIdAsync(int id)
         {
             var device = await _repositoryProvider.DeviceRepository.GetDeviceByIdAsync(id);
@@ -82,7 +79,5 @@ namespace OneValet.DeviceGallery.Application.Services
             await _repositoryProvider.DeviceRepository.AddMultipleDevicesAsync(devices);
             return new Response<IEnumerable<DeviceResponse>>(_mapper.Map<IEnumerable<DeviceResponse>>(devices));
         }
-
-
     }
 }

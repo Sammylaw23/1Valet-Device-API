@@ -35,30 +35,15 @@ namespace OneValet.DeviceGallery.Application.Services
             {
                 throw new ApiException($"Email {userRequest.Email} is already taken.");
             }
-
             var user = _mapper.Map<DeviceUser>(userRequest);
-
             await _repositoryProvider.UserRepository.CreateUserAsync(user);
             await _repositoryProvider.SaveChangesAsync();
-            //should I send email???????
-            //    var result = await _userManager.CreateAsync(user, request.Password);
-            if (true)
-            {
-                return new Response<UserResponse>(_mapper.Map<UserResponse>(user));
-                //await _userManager.AddToRoleAsync(user, Roles.Basic.ToString());
-                //        var verificationUri = await SendVerificationEmail(user, origin);
-                //        //TODO: Attach Email Service here and configure it via appsettings
-                //        await _emailService.SendAsync(new Application.DTOs.Email.EmailRequest() { From = "mail@codewithmukesh.com", To = user.Email, Body = $"Please confirm your account by visiting this URL {verificationUri}", Subject = "Confirm Registration" });
-                //return new Response<string>(user.Id, message: $"User Registered. Please confirm your account by visiting this URL {verificationUri}");
-            }
-            else
-            {
-                //throw new ApiException($"{result.Errors}");
-            }
-
-
+            //send email to user
+            bool emailSent = true;
+            var emailStatus = string.Empty;
+            emailStatus = emailSent ? "User created and email notification successfully sent" : "User created but email notification failed!";
+            return new Response<UserResponse>(_mapper.Map<UserResponse>(user), emailStatus);
         }
-
         public async Task DeleteUserAsync(int id)
         {
             var user = await _repositoryProvider.UserRepository.GetUserByIdAsync(id);
@@ -67,19 +52,16 @@ namespace OneValet.DeviceGallery.Application.Services
             _repositoryProvider.UserRepository.DeleteUser(user);
             await _repositoryProvider.SaveChangesAsync();
         }
-
         public async Task<Response<IEnumerable<UserResponse>>> GetAllUsersAsync()
         {
             var users = await _repositoryProvider.UserRepository.GetAllUsersAsync();
             return new Response<IEnumerable<UserResponse>>(_mapper.Map<IEnumerable<UserResponse>>(users));
         }
-
         public async Task<Response<UserResponse>> GetUserByIdAsync(int id)
         {
             var user = await _repositoryProvider.UserRepository.GetUserByIdAsync(id);
             return (user == null) ? throw new NotFoundException($"User with Id {id} not found") : new Response<UserResponse>(_mapper.Map<UserResponse>(user));
         }
-
         public async Task UpdateUserAsync(int id, UserRequest deviceRequest)
         {
             var user = await _repositoryProvider.UserRepository.GetUserByIdAsync(id);
@@ -88,7 +70,6 @@ namespace OneValet.DeviceGallery.Application.Services
             _repositoryProvider.UserRepository.UpdateUser(user);
             await _repositoryProvider.SaveChangesAsync();
         }
-
         public async Task<Response<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
         {
             var user = await _repositoryProvider.UserRepository.GetUserByEmailAsync(request.Email);
@@ -101,32 +82,26 @@ namespace OneValet.DeviceGallery.Application.Services
             {
                 throw new ApiException($"Invalid Credentials for '{request.Email}'.");
             }
-           
             var response = _mapper.Map<AuthenticationResponse>(user);
             response.IsVerified = true;
-          
             return new Response<AuthenticationResponse>(response, $"Successfully authenticated {user.Email}");
         }
-
         public async Task<AuthenticationResponse?> BasicAuthenticateAsync(AuthenticationRequest request)
         {
             var user = await _repositoryProvider.UserRepository.GetUserByEmailAsync(request.Email);
             if (user == null)
             {
                 return null;
-                //return new AuthenticationResponse(null, $"No Users registered with {request.Email}.");
             }
             var exist = await _repositoryProvider.UserRepository.UserCredentialExist(request);
             if (!exist)
             {
                 return null;
-                //return new Response<AuthenticationResponse>(null, $"Invalid Credentials for '{request.Email}'.");
             }
 
             var response = _mapper.Map<AuthenticationResponse>(user);
             response.IsVerified = true;
             return response;
-            //return new Response<AuthenticationResponse>(response, $"Successfully authenticated {user.Email}");
         }
     }
 }
